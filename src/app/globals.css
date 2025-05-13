@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fontes */
+  --font-inter: "Inter", sans-serif;
+
+  /* Breakpoints */
+  --breakpoint-3xl: 120rem;
+
+  /* Cores */
+  --color-preto: #004d61;
+  --color-verde: #004d61;
+  --color-verde-claro: #f8f8f8;
+  --color-cinza: #dee9ea;
+  --color-cinza-escuro: #8b8b8b;
+  --color-erro: #bf1313;
+  --color-azul-grafico: #2567f9;
+  --color-roxo-grafico: #8f3cff;
+  --color-laranja-grafico: #f1823d;
+  --color-magenta-grafico: #ff3c82;
+
+  /* Tipografia */
+  --text-size-14: 14px;
+  --text-size-16: 16px;
+  --text-size-18: 18px;
+  --text-size-20: 20px;
+  --text-size-25: 25px;
+
+  --line-height-25: 30px;
+  --line-height-14: 16.8px;
+  --line-height-16: 19.2px;
+  --line-height-18: 21.6px;
+  --line-height-20: 24px;
+
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+@layer components {
+  .container {
+    @apply flex flex-col items-end max-w-xl px-4;
+  }
+}
