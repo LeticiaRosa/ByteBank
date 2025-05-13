@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../../styles/globals.css";
+import { Header } from "../components/Header";
 
 export const metadata: Metadata = {
   title: "Byte Bank",
@@ -18,7 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <html lang="pt-br">
+        <body>
+          <Header />
+          <main>{children}</main>
+        </body>
+      </html>
     </html>
   );
 }

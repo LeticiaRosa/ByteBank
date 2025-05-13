@@ -1,16 +1,17 @@
-import { UserCircle } from "phosphor-react";
+import Image from "next/image";
 
-interface HeaderProps {
-  name: string;
-}
-
-export function Header(props: HeaderProps) {
+export function Header() {
   return (
     <header className="flex flex-col items-center justify-center bg-verde h-24">
       <div className="container">
-        <div className="flex items-center justify-center gap-2 text-white px-4">
-          <span className="text-size-14">{props.name}</span>
-          <UserCircle size={40} weight="thin" className="bg-verde" />
+        <div className="flex items-center justify-center gap-6 text-white px-4">
+          <span className="text-size-14">Joana da Silva Oliveira</span>
+          <Image
+            src="/Avatar.png"
+            alt="Ícone de usuário"
+            width={40}
+            height={40}
+          />
         </div>
       </div>
     </header>
