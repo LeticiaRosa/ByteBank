@@ -48,6 +48,9 @@
   .container {
     @apply flex flex-col justify-center max-w-md px-4;
   }
+  .title {
+    @apply text-2xl font-bold text-preto;
+  }
   .menu {
     @apply flex flex-col items-start justify-start w-full min-h-screen bg-white rounded-md shadow-lg text-black gap-10 p-4;
   }
@@ -60,6 +63,15 @@
   .card {
     @apply flex flex-col items-start justify-start w-full  bg-white rounded-md shadow-lg text-black gap-10 p-4;
   }
+  .campo {
+    @apply mt-4;
+  }
+  .campo-input {
+    @apply w-full h-10 border border-verde-claro bg-white rounded-md p-2 text-black text-center focus:border-verde-claro focus:outline-none;
+  }
+  .btn {
+    @apply w-full h-10 bg-verde-claro text-white rounded-md p-2 text-center font-semibold cursor-pointer hover:bg-verde;
+  }
 }
 
 html,
@@ -67,10 +79,4 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-}
-
-#__next {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 }
