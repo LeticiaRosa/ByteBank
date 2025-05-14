@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../../styles/globals.css";
 import { Header } from "../components/Header";
+import { Menu } from "../components/Menu";
 
 export const metadata: Metadata = {
   title: "Byte Bank",
@@ -18,13 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <html lang="pt-br">
-        <body>
-          <Header />
-          <main className="center">{children}</main>
-        </body>
-      </html>
+    <html lang="pt-BR" className="h-full">
+      <body className="flex flex-col h-full">
+        <Header />
+        <div className="flex flex-row container ">
+          <Menu />
+          <main className="">{children}</main>
+        </div>
+      </body>
     </html>
   );
 }

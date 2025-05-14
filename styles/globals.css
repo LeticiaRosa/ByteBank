@@ -40,16 +40,16 @@
 
 @layer components {
   body {
-    @apply bg-background-color;
+    @apply bg-background-color w-screen h-screen m-0 p-0;
   }
   .center {
     @apply flex items-center justify-center;
   }
   .container {
-    @apply flex flex-col justify-center max-w-xl px-4;
+    @apply flex flex-col justify-center max-w-md px-4;
   }
   .menu {
-    @apply flex flex-col items-start justify-start w-full h-screen mt-4 bg-white rounded-md shadow-lg text-black gap-10 p-4;
+    @apply flex flex-col items-start justify-start w-full min-h-screen bg-white rounded-md shadow-lg text-black gap-10 p-4;
   }
   .menu-item {
     @apply flex flex-col items-center justify-center gap-4 hover:text-verde-claro hover:font-bold;
@@ -57,4 +57,20 @@
   .line {
     @apply w-24 h-0.5 bg-preto border-0 rounded-sm hover:bg-verde-claro;
   }
+  .card {
+    @apply flex flex-col items-start justify-start w-full  bg-white rounded-md shadow-lg text-black gap-10 p-4;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#__next {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
