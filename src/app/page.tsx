@@ -1,3 +1,9 @@
+import { Menu } from "../components/Menu";
+
 export default function Home() {
-  return <>teste</>;
+  return (
+    <div className="container items-start">
+      <Menu />
+    </div>
+  );
 }

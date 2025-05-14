@@ -22,7 +22,7 @@ export default function RootLayout({
       <html lang="pt-br">
         <body>
           <Header />
-          <main>{children}</main>
+          <main className="center">{children}</main>
         </body>
       </html>
     </html>

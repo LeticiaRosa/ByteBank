@@ -8,9 +8,10 @@
   --breakpoint-3xl: 120rem;
 
   /* Cores */
+  --color-background-color: #e4ede3;
   --color-preto: #004d61;
   --color-verde: #004d61;
-  --color-verde-claro: #f8f8f8;
+  --color-verde-claro: #47a138;
   --color-cinza: #dee9ea;
   --color-cinza-escuro: #8b8b8b;
   --color-erro: #bf1313;
@@ -38,7 +39,22 @@
 }
 
 @layer components {
+  body {
+    @apply bg-background-color;
+  }
+  .center {
+    @apply flex items-center justify-center;
+  }
   .container {
-    @apply flex flex-col items-end max-w-xl px-4;
+    @apply flex flex-col justify-center max-w-xl px-4;
+  }
+  .menu {
+    @apply flex flex-col items-start justify-start w-full h-screen mt-4 bg-white rounded-md shadow-lg text-black gap-10 p-4;
+  }
+  .menu-item {
+    @apply flex flex-col items-center justify-center gap-4 hover:text-verde-claro hover:font-bold;
+  }
+  .line {
+    @apply w-24 h-0.5 bg-preto border-0 rounded-sm hover:bg-verde-claro;
   }
 }
