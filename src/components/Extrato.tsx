@@ -74,13 +74,20 @@ export function Extrato() {
               }).format(new Date(`2023-${mes}-01`))}
             </p>
             {transacoes.map((transacao) => (
-              <div key={transacao.id} className="transacao-item">
+              <div
+                key={transacao.id}
+                className={` transacao-item ${
+                  transacao.tipo === "Depósito"
+                    ? "text-verde-claro"
+                    : "text-laranja-grafico"
+                }`}
+              >
                 <p>{transacao.tipo}</p>
                 <h6>
-                  {transacao.tipo === "depósito" ? "+" : "-"} R${" "}
+                  {transacao.tipo === "Depósito" ? "+" : "-"} R${" "}
                   {transacao.valor}
                 </h6>
-                <hr className="w-32 h-0.5 border-0 bg-verde my-2" />
+                <hr className="w-40 h-0.5 border-0 bg-cinza my-2" />
               </div>
             ))}
           </div>

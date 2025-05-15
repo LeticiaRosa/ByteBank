@@ -61,7 +61,7 @@
     @apply w-24 h-0.5 bg-preto border-0 rounded-sm hover:bg-verde-claro;
   }
   .card {
-    @apply flex flex-col items-start justify-start w-full bg-white rounded-md shadow-lg text-black p-4;
+    @apply flex flex-col items-start justify-start  bg-white rounded-md shadow-lg text-black p-4;
   }
   .campo {
     @apply flex flex-col p-2 gap-2;
@@ -75,16 +75,17 @@
 
   .transacoes {
     @apply flex flex-col items-start justify-start gap-4;
-  }
-  .mes-group {
-    @apply text-verde font-semibold text-size-16 py-2;
-  }
 
-  .transacao-item {
-    @apply flex flex-col items-start justify-start;
+    .mes-group {
+      @apply text-verde font-semibold text-size-16 py-2;
+    }
 
-    h6 {
-      @apply font-bold;
+    .transacao-item {
+      @apply flex flex-col items-start justify-start;
+
+      h6 {
+        @apply font-bold;
+      }
     }
   }
 }
