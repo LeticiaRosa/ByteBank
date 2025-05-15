@@ -15,7 +15,7 @@ export function Menu() {
 
   return (
     <nav className="menu">
-      <ul className="flex flex-col items-center justify-center gap-4">
+      <ul className="flex flex-row items-center justify-center gap-6 md:flex-col md:gap-4">
         {menuItems.map((item) => (
           <li
             key={item.href}

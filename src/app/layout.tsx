@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className="flex flex-col h-full ">
         <Header />
         <div className="center">
-          <div className="flex flex-row container gap-6 pt-6">
+          <div className="flex flex-col container gap-6 pt-6 md:flex-row">
             <Menu />
             <main>{children}</main>
           </div>
