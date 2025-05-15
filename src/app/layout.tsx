@@ -22,9 +22,9 @@ export default function RootLayout({
     <html lang="pt-BR" className="h-full">
       <body className="flex flex-col h-full">
         <Header />
-        <div className="flex flex-row container ">
+        <div className="flex flex-row container gap-6 pt-6">
           <Menu />
-          <main className="">{children}</main>
+          <main>{children}</main>
         </div>
       </body>
     </html>

@@ -49,10 +49,10 @@
     @apply flex flex-col justify-center max-w-md px-4;
   }
   .title {
-    @apply text-2xl font-bold text-preto;
+    @apply text-2xl font-semibold text-preto;
   }
   .menu {
-    @apply flex flex-col items-start justify-start w-full min-h-screen bg-white rounded-md shadow-lg text-black gap-10 p-4;
+    @apply flex flex-col items-start justify-start bg-white rounded-md shadow-lg text-black gap-10 p-4;
   }
   .menu-item {
     @apply flex flex-col items-center justify-center gap-4 hover:text-verde-claro hover:font-bold;
@@ -70,7 +70,7 @@
     @apply w-full h-10 border border-verde-claro bg-white rounded-md p-2 text-black text-center focus:border-verde-claro focus:outline-none;
   }
   .btn {
-    @apply w-full h-10 bg-verde-claro text-white rounded-md p-2 text-center font-semibold cursor-pointer hover:bg-verde;
+    @apply w-full h-10 bg-verde text-white rounded-md p-2 text-center font-semibold cursor-pointer hover:bg-verde;
   }
 }
 
