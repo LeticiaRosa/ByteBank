@@ -1,25 +1,91 @@
+interface Transacao {
+  id: number;
+  tipo: string;
+  valor: number;
+  data: string;
+}
+
+interface Extrato {
+  mes: [
+    {
+      id: number;
+      tipo: string;
+      valor: number;
+      data: string;
+    }
+  ];
+}
+
 export function Extrato() {
+  const extrato: Transacao[] = [
+    {
+      id: 1,
+      tipo: "Depósito",
+      valor: 150,
+      data: "2023-11-01",
+    },
+    {
+      id: 2,
+      tipo: "Saque",
+      valor: 50,
+      data: "2023-11-02",
+    },
+    {
+      id: 3,
+      tipo: "Transferência",
+      valor: 100,
+      data: "2023-12-03",
+    },
+    {
+      id: 4,
+      tipo: "Depósito",
+      valor: 200,
+      data: "2023-11-04",
+    },
+    {
+      id: 5,
+      tipo: "Saque",
+      valor: 75,
+      data: "2023-12-05",
+    },
+  ];
+
+  const reduceMes: Record<string, Transacao[]> = extrato.reduce<
+    Record<string, Transacao[]>
+  >((acc, transacao) => {
+    const mes = transacao.data.split("-")[1];
+    if (!acc[mes]) {
+      acc[mes] = [];
+    }
+    acc[mes].push(transacao);
+    return acc;
+  }, {});
+
   return (
-    <div className="card bg-white shadow-md rounded-lg flex flex-row  min-w-40">
-      <aside className="extrato">
-        <h3 className="title font-semibold text-preto pb-4">Extrato</h3>
-        <div className="registro-transacoes">
-          <div className="transacoes-group">
-            <p className="mes-group">Novembro</p>
-            <p className="transacao-item">
-              <span>Depósito</span>
-              <h6>R$ 150</h6>
+    <aside className="card">
+      <h3 className="title pb-8">Extrato</h3>
+      <div className="transacoes">
+        {Object.entries(reduceMes).map(([mes, transacoes]) => (
+          <div key={mes} className="transacoes-group">
+            <p className="mes-group">
+              {new Intl.DateTimeFormat("pt-BR", {
+                month: "long",
+                year: "numeric",
+              }).format(new Date(`2023-${mes}-01`))}
             </p>
+            {transacoes.map((transacao) => (
+              <div key={transacao.id} className="transacao-item">
+                <p>{transacao.tipo}</p>
+                <h6>
+                  {transacao.tipo === "depósito" ? "+" : "-"} R${" "}
+                  {transacao.valor}
+                </h6>
+                <hr className="w-32 h-0.5 border-0 bg-verde my-2" />
+              </div>
+            ))}
           </div>
-          <div className="transacoes-group">
-            <p className="mes-group">Dezembro</p>
-            <p className="transacao-item">
-              <span>Depósito</span>
-              <h6>R$ 150</h6>
-            </p>
-          </div>
-        </div>
-      </aside>
-    </div>
+        ))}
+      </div>
+    </aside>
   );
 }

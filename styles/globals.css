@@ -72,18 +72,19 @@
   .btn {
     @apply w-full h-10 bg-verde text-white rounded-md p-2 text-center font-semibold cursor-pointer hover:bg-verde;
   }
-  .extrato {
-    @apply bg-white rounded-md;
+
+  .transacoes {
+    @apply flex flex-col items-start justify-start gap-4;
+  }
+  .mes-group {
+    @apply text-verde font-semibold text-size-16 py-2;
   }
 
-  .transacoes-group {
-    @apply mb-4;
+  .transacao-item {
+    @apply flex flex-col items-start justify-start;
 
-    & .mes-group {
-      @apply text-verde font-semibold text-lg;
-    }
-    & .transacao-item {
-      @apply flex flex-col items-start justify-start;
+    h6 {
+      @apply font-bold;
     }
   }
 }
