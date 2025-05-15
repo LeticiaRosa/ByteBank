@@ -80,7 +80,7 @@
     @apply mb-4;
 
     & .mes-group {
-      @apply text-verde-claro font-semibold text-lg;
+      @apply text-verde font-semibold text-lg;
     }
     & .transacao-item {
       @apply flex flex-col items-start justify-start;
