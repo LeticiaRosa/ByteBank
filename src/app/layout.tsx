@@ -20,11 +20,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="h-full">
-      <body className="flex flex-col h-full">
+      <body className="flex flex-col h-full ">
         <Header />
-        <div className="flex flex-row container gap-6 pt-6">
-          <Menu />
-          <main>{children}</main>
+        <div className="center">
+          <div className="flex flex-row container gap-6 pt-6">
+            <Menu />
+            <main>{children}</main>
+          </div>
         </div>
       </body>
     </html>

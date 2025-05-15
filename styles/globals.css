@@ -61,10 +61,10 @@
     @apply w-24 h-0.5 bg-preto border-0 rounded-sm hover:bg-verde-claro;
   }
   .card {
-    @apply flex flex-col items-start justify-start w-full  bg-white rounded-md shadow-lg text-black gap-10 p-4;
+    @apply flex flex-col items-start justify-start w-full bg-white rounded-md shadow-lg text-black p-4;
   }
   .campo {
-    @apply mt-4;
+    @apply flex flex-col p-2 gap-2;
   }
   .campo-input {
     @apply w-full h-10 border border-verde-claro bg-white rounded-md p-2 text-black text-center focus:border-verde-claro focus:outline-none;

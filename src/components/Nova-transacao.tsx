@@ -1,6 +1,6 @@
 export default function NovaTransacao() {
   return (
-    <section className="card">
+    <section className="card gap-2">
       <h2 className="title">Nova transação</h2>
       <form>
         <div className="campo">
@@ -18,7 +18,6 @@ export default function NovaTransacao() {
         </div>
         <div className="campo">
           <label htmlFor="valor">Valor:</label>
-          <br />
           <input
             type="number"
             name="valor"
