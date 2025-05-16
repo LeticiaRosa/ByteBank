@@ -1,3 +1,3 @@
 export default function Outros() {
-  return <>Outros</>;
+  return <div className="container-page">Outros</div>;
 }

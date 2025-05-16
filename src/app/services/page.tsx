@@ -4,7 +4,7 @@ import NovaTransacao from "../../components/Nova-transacao";
 
 export default function Services() {
   return (
-    <div className="flex flex-col md:flex-row gap-6 w-full">
+    <div className="container-page">
       <div className="flex flex-col gap-6 w-full">
         <Card />
         <NovaTransacao />

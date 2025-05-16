@@ -49,6 +49,9 @@
   .container {
     @apply flex flex-col justify-end px-4 max-w-250 gap-6 md:flex-row;
   }
+  .container-page {
+    @apply flex flex-col md:flex-row gap-6 w-full;
+  }
   .title {
     @apply text-2xl font-semibold text-preto;
   }
