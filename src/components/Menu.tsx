@@ -15,27 +15,29 @@ export function Menu() {
 
   return (
     <nav className="menu">
-      <ul className="flex flex-row items-center justify-center gap-6 md:flex-col md:gap-4">
+      <ul className="flex flex-row justify-between gap-2 md:flex-col md:gap-4">
         {menuItems.map((item) => (
           <li
             key={item.href}
-            className="text-center flex flex-col items-center gap-4"
+            className="flex text-center items-center justify-center md:flex-col md:items-center md:text-size-16  text-size-14 gap-4"
           >
-            <Link
-              href={item.href}
-              className={`${
-                pathname === item.href
-                  ? "text-verde font-semibold"
-                  : "text-black"
-              } transition-colors`}
-            >
-              {item.label}
-            </Link>
-            <hr
-              className={`w-24 h-0.5 border-0 rounded-sm  ${
-                pathname === item.href ? "bg-verde" : "bg-cinza"
-              }`}
-            />
+            <div className="flex flex-col gap-2">
+              <Link
+                href={item.href}
+                className={`${
+                  pathname === item.href
+                    ? "text-verde font-semibold"
+                    : "text-black"
+                } transition-colors`}
+              >
+                {item.label}
+              </Link>
+              <hr
+                className={` w-18 h-0.5 border-0 rounded-sm ${
+                  pathname === item.href ? "bg-verde" : "bg-cinza"
+                }`}
+              />
+            </div>
           </li>
         ))}
       </ul>
