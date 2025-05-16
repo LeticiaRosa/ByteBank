@@ -19,9 +19,9 @@ export function Menu() {
         {menuItems.map((item) => (
           <li
             key={item.href}
-            className="flex text-center items-center justify-center md:flex-col md:items-center md:text-size-16  text-size-14 gap-4"
+            className="flex text-center items-center justify-center md:flex-col md:items-center md:text-size-16 text-size-14 gap-4"
           >
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 items-center text-nowrap">
               <Link
                 href={item.href}
                 className={`${

@@ -19,13 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="h-full">
-      <body className="flex flex-col h-full ">
+    <html lang="pt-BR" className="h-full w-full">
+      <body>
         <Header />
         <div className="center">
-          <div className="flex flex-col container gap-6 pt-6 md:flex-row">
+          <div className="container pt-6 max-w-250">
             <Menu />
-            <main>{children}</main>
+            <main className="w-full">{children}</main>
           </div>
         </div>
       </body>

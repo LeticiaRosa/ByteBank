@@ -46,7 +46,7 @@
     @apply flex items-center justify-center;
   }
   .container {
-    @apply flex flex-col justify-center max-w-md px-4;
+    @apply flex flex-col justify-end px-4 max-w-250 gap-6 md:flex-row;
   }
   .title {
     @apply text-2xl font-semibold text-preto;

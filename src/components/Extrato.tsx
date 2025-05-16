@@ -62,11 +62,11 @@ export function Extrato() {
   }, {});
 
   return (
-    <aside className="card">
+    <aside className="card max-md:items-center">
       <h3 className="title pb-8">Extrato</h3>
       <div className="transacoes">
         {Object.entries(reduceMes).map(([mes, transacoes]) => (
-          <div key={mes} className="transacoes-group">
+          <div key={mes}>
             <p className="mes-group">
               {new Intl.DateTimeFormat("pt-BR", {
                 month: "long",
