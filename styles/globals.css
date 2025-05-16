@@ -70,6 +70,10 @@
     @apply w-full h-10 bg-verde text-white rounded-md p-2 text-center font-semibold cursor-pointer hover:bg-verde;
   }
 
+  .btn-secoundary {
+    @apply h-10 w-32 bg-blue-500 text-white rounded-md p-2 text-center font-semibold cursor-pointer hover:bg-blue-600;
+  }
+
   .transacoes {
     @apply flex flex-col items-start justify-start gap-4;
 

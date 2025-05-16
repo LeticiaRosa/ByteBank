@@ -1,13 +1,16 @@
+import Image from "next/image";
 import Link from "next/link";
 
-export default async function NotFound() {
+export default function NotFound() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center h-screen w-screen bg-verde text-white gap-10">
-      <h2 className="text-size-25">Not Found!</h2>
-      <p>Could not find requested resource</p>
-      <Link href="/" className="p-4 texto-white rounded-2xl bg-cinza-escuro">
-        Return Home
-      </Link>
+    <div className="absolute left-0 top-0  h-screen w-screen bg-verde text-white gap-10">
+      <div className="flex flex-col items-center justify-center h-screen gap-10">
+        <Image src="/404.png" alt="404 Not Found" width={300} height={300} />
+        <p>Could not find requested resource</p>
+        <Link href="/" className="btn-secoundary">
+          Return Home
+        </Link>
+      </div>
     </div>
   );
 }
