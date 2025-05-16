@@ -5,6 +5,7 @@
   --font-inter: "Inter", sans-serif;
 
   /* Breakpoints */
+  --breakpoint-xs: 30rem;
   --breakpoint-3xl: 120rem;
 
   /* Cores */
@@ -53,6 +54,13 @@
   }
   .menu {
     @apply flex flex-col bg-transparent rounded-md md:shadow-lg text-black gap-10 md:p-4 md:bg-white;
+  }
+  .menu-open {
+    @apply flex flex-col bg-white flex-1 absolute left-0 top-0 p-4;
+    z-index: 10;
+  }
+  .menu-open ul {
+    @apply flex flex-col gap-4;
   }
   .line {
     @apply w-24 h-0.5 bg-preto border-0 rounded-sm hover:bg-verde-claro;

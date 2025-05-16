@@ -7,15 +7,15 @@ export function Menu() {
   const pathname = usePathname();
 
   const menuItems = [
-    { href: "/", label: "Início" },
-    { href: "/transferencias", label: "Transferências" },
-    { href: "/investimentos", label: "Investimentos" },
-    { href: "/outros", label: "Outros Serviços" },
+    { href: "/services", label: "Início" },
+    { href: "/services/transferencias", label: "Transferências" },
+    { href: "/services/investimentos", label: "Investimentos" },
+    { href: "/services/outros", label: "Outros Serviços" },
   ];
 
   return (
-    <nav className="menu">
-      <ul className="flex flex-row justify-between gap-2 md:flex-col md:gap-4">
+    <nav id="menu" className="menu xs:flex hidden">
+      <ul className="flex justify-between gap-2 md:flex-col md:gap-4">
         {menuItems.map((item) => (
           <li
             key={item.href}
