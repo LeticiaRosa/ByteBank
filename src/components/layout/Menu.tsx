@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import LinkButton from "../ui/form/Link";
+import { Separador } from "../ui/form/Separador";
 
 interface MenuProps {
   openMenu: boolean;
@@ -62,10 +63,10 @@ export function Menu({ openMenu, setOpenMenu }: MenuProps) {
                 >
                   {item.label}
                 </LinkButton>
-                <hr
-                  className={` w-18 h-0.5 border-0 rounded-sm ${
-                    pathname === item.href ? "bg-verde" : "bg-cinza"
-                  }`}
+
+                <Separador
+                  size="small"
+                  variant={pathname === item.href ? "secondary" : "primary"}
                 />
               </div>
             </li>

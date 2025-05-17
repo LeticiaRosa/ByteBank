@@ -1,3 +1,5 @@
+import { Separador } from "../ui/form/Separador";
+
 interface Transacao {
   id: number;
   tipo: string;
@@ -87,7 +89,7 @@ export default function Extrato() {
                   {transacao.tipo === "Depósito" ? "+" : "-"} R${" "}
                   {transacao.valor}
                 </h6>
-                <hr className="w-40 h-0.5 border-0 bg-cinza my-2" />
+                <Separador size="large" />
               </div>
             ))}
           </div>
