@@ -7,7 +7,7 @@ interface HeaderProps {
   setOpenMenu: () => void;
 }
 
-export function Header({ setOpenMenu }: HeaderProps) {
+export default function HeaderServices({ setOpenMenu }: HeaderProps) {
   return (
     <HeaderBase>
       <div className="flex items-center justify-between gap-6">

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { Header } from "../../components/Header";
-import { Menu } from "../../components/Menu";
+import HeaderServices from "../../components/layout/HeaderServices";
+import { Menu } from "../../components/layout/Menu";
 
 export default function ServiceLayout({
   children,
@@ -20,7 +20,7 @@ export default function ServiceLayout({
 
   return (
     <>
-      <Header setOpenMenu={handleOpenMenu} />
+      <HeaderServices setOpenMenu={handleOpenMenu} />
       <div className="center">
         <div className="container pt-6 max-w-250">
           <Menu openMenu={openMenu} setOpenMenu={handleOpenMenu} />
