@@ -79,12 +79,25 @@
   .campo-input {
     @apply w-full h-10 border border-verde-claro bg-white rounded-md p-2 text-black text-center focus:border-verde-claro focus:outline-none;
   }
+
   .btn {
-    @apply w-full h-10 bg-verde text-white rounded-md p-2 text-center font-semibold cursor-pointer hover:bg-verde;
+    @apply w-full bg-verde text-white rounded-md py-2 px-4 text-center font-semibold cursor-pointer hover:bg-verde;
   }
 
   .btn-secoundary {
-    @apply h-10 w-32 bg-blue-500 text-white rounded-md p-2 text-center font-semibold cursor-pointer hover:bg-blue-600;
+    @apply bg-verde-claro text-white rounded-md py-2 px-4 text-center font-semibold cursor-pointer hover:bg-green-800;
+  }
+
+  .btn-outline {
+    @apply border border-verde-claro text-verde-claro rounded-md py-2 px-4 text-center font-semibold cursor-pointer hover:bg-verde-claro hover:text-white;
+  }
+
+  .link {
+    @apply text-verde-claro font-semibold text-size-16 cursor-pointer;
+  }
+
+  .link-secoundary {
+    @apply text-verde font-semibold text-size-16 cursor-pointer;
   }
 
   .transacoes {
