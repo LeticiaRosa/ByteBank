@@ -1,5 +1,5 @@
-import Extrato from "../../components/banking/Extrato";
-import NovaTransacao from "../../components/banking/Nova-transacao";
+import Extrato from "../../components/banking/extrato/Extrato";
+import NovaTransacao from "../../components/banking/NovaTransacao";
 import CardInfo from "../../components/layout/CardInfo";
 
 export default function Services() {

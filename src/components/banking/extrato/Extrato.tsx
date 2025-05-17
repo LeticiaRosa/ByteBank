@@ -1,4 +1,4 @@
-import { Separador } from "../ui/form/Separador";
+import ItemExtrato from "./ItemExtrato";
 
 interface Transacao {
   id: number;
@@ -76,21 +76,12 @@ export default function Extrato() {
               }).format(new Date(`2023-${mes}-01`))}
             </p>
             {transacoes.map((transacao) => (
-              <div
+              <ItemExtrato
                 key={transacao.id}
-                className={` transacao-item ${
-                  transacao.tipo === "Depósito"
-                    ? "text-verde-claro"
-                    : "text-laranja-grafico"
-                }`}
-              >
-                <p>{transacao.tipo}</p>
-                <h6>
-                  {transacao.tipo === "Depósito" ? "+" : "-"} R${" "}
-                  {transacao.valor}
-                </h6>
-                <Separador size="large" />
-              </div>
+                id={transacao.id}
+                tipo={transacao.tipo}
+                valor={transacao.valor}
+              />
             ))}
           </div>
         ))}
