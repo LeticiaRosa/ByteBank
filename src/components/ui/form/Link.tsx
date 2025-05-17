@@ -4,12 +4,13 @@ interface LinkButtonProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   children: React.ReactNode;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "button";
 }
 
 const VARIANT_CLASSES = {
   primary: "link",
   secondary: "link-secoundary",
+  button: "btn-secoundary",
 };
 
 export default function LinkButton({

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import LinkButton from "../components/ui/form/Link";
 
 export default function NotFound() {
   return (
@@ -7,9 +7,10 @@ export default function NotFound() {
       <div className="flex flex-col items-center justify-center h-screen gap-10">
         <Image src="/404.png" alt="404 Not Found" width={300} height={300} />
         <p>Could not find requested resource</p>
-        <Link href="/services" className="btn-secoundary">
+
+        <LinkButton variant="button" href="/services">
           Return Home
-        </Link>
+        </LinkButton>
       </div>
     </div>
   );

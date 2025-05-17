@@ -10,9 +10,10 @@
 
   /* Cores */
   --color-background-color: #e4ede3;
-  --color-preto: #004d61;
+  --color-preto: #000000;
   --color-verde: #004d61;
-  --color-verde-claro: #47a138;
+  --color-verde-claro: #71bebd;
+  --color-verde-light: #47a138;
   --color-cinza: #dee9ea;
   --color-cinza-escuro: #8b8b8b;
   --color-erro: #bf1313;
@@ -53,10 +54,10 @@
     @apply flex flex-col md:flex-row gap-6 w-full;
   }
   .title {
-    @apply text-2xl font-semibold text-preto;
+    @apply text-2xl font-semibold text-verde;
   }
   .menu {
-    @apply flex-col bg-transparent rounded-md md:shadow-lg text-black gap-10 md:p-4 md:bg-white xs:flex hidden;
+    @apply flex-col bg-transparent rounded-md md:shadow-lg text-verde gap-10 md:p-4 md:bg-white xs:flex hidden;
   }
   .menu-open {
     @apply flex flex-col bg-white flex-1 fixed left-0 top-0 p-4 z-30 shadow-lg rounded-md;
@@ -81,19 +82,19 @@
   }
 
   .btn {
-    @apply w-full bg-verde text-white rounded-md py-2 px-4 text-center font-semibold cursor-pointer hover:bg-verde;
+    @apply w-full bg-verde text-white rounded-md py-2 px-4 text-center font-semibold cursor-pointer transition-colors duration-300 ease-in-out hover:bg-verde-claro;
   }
 
   .btn-secoundary {
-    @apply bg-verde-claro text-white rounded-md py-2 px-4 text-center font-semibold cursor-pointer hover:bg-green-800;
+    @apply bg-white text-verde rounded-md py-2 px-4 text-center font-semibold cursor-pointer transition-colors duration-300 ease-in-out hover:bg-verde-claro hover:text-white;
   }
 
   .btn-outline {
-    @apply border border-verde-claro text-verde-claro rounded-md py-2 px-4 text-center font-semibold cursor-pointer hover:bg-verde-claro hover:text-white;
+    @apply border border-white text-white rounded-md py-2 px-4 text-center font-semibold cursor-pointer transition-colors duration-300 ease-in-out hover:bg-verde-claro hover:text-white;
   }
 
   .link {
-    @apply text-verde-claro font-semibold text-size-16 cursor-pointer;
+    @apply text-white font-semibold text-size-16 cursor-pointer;
   }
 
   .link-secoundary {

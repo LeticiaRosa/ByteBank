@@ -16,7 +16,7 @@ export default function HeaderServices({ setOpenMenu }: HeaderProps) {
           alt="Menu"
           width={32}
           height={32}
-          className="xs:hidden"
+          className="xs:hidden hover:cursor-pointer"
           onClick={() => setOpenMenu()}
         />
         <Image
@@ -24,7 +24,7 @@ export default function HeaderServices({ setOpenMenu }: HeaderProps) {
           alt="Logo"
           width={150}
           height={2}
-          className="xs:flex hidden"
+          className="xs:flex hidden hover:cursor-pointer"
           onClick={() => redirect("/home")}
         />
       </div>

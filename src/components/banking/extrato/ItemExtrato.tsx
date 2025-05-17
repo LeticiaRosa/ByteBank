@@ -11,7 +11,7 @@ export default function ItemExtrato({ id, tipo, valor }: ItemExtratoProps) {
     <div
       key={id}
       className={` transacao-item ${
-        tipo === "Depósito" ? "text-verde-claro" : "text-laranja-grafico"
+        tipo === "Depósito" ? "text-verde-light" : "text-laranja-grafico"
       }`}
     >
       <p>{tipo}</p>
