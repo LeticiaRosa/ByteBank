@@ -16,7 +16,7 @@ interface Extrato {
   ];
 }
 
-export function Extrato() {
+export default function Extrato() {
   const extrato: Transacao[] = [
     {
       id: 1,

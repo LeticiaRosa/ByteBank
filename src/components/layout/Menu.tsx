@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import LinkButton from "../ui/form/Link";
 
 interface MenuProps {
   openMenu: boolean;
@@ -52,7 +52,7 @@ export function Menu({ openMenu, setOpenMenu }: MenuProps) {
               onClick={() => setOpenMenu("open")}
             >
               <div className="flex flex-col gap-2 items-center text-nowrap">
-                <Link
+                <LinkButton
                   href={item.href}
                   className={`${
                     pathname === item.href
@@ -61,7 +61,7 @@ export function Menu({ openMenu, setOpenMenu }: MenuProps) {
                   } transition-colors`}
                 >
                   {item.label}
-                </Link>
+                </LinkButton>
                 <hr
                   className={` w-18 h-0.5 border-0 rounded-sm ${
                     pathname === item.href ? "bg-verde" : "bg-cinza"
