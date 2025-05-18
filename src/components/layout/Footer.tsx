@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="bg-black text-white flex bottom-0 w-full ">
-      <div className="container mx-auto flex flex-col items-center justify-between">
+      <div className="container max-w-250 justify-between mx-auto flex flex-col ">
         <div className="flex flex-row items-center justify-between">
           <div className="p-4">
             <p>Serviços</p>
