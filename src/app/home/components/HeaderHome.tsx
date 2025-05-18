@@ -13,7 +13,7 @@ export default function HeaderHome() {
           alt="Logo"
           width={150}
           height={2}
-          className="xs:flex hidden"
+          className="xs:flex hidden cursor-pointer"
         />
         <LinkButton href="/sobre">Sobre</LinkButton>
         <LinkButton href="/">Serviços</LinkButton>
