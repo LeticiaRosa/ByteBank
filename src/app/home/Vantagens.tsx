@@ -30,8 +30,8 @@ export default function Vantagens() {
 
   return (
     <div>
-      <p className="text-center font-semibold text-white text-2xl mt-10">
-        Vantagens do nosso banco:{" "}
+      <p className="text-center font-semibold text-white text-2xl">
+        Vantagens do nosso banco
       </p>
       <div className="flex flex-row items-center justify-center gap-8">
         {vantagens.map((vantagem, index) => (
