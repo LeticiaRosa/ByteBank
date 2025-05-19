@@ -42,7 +42,7 @@
 
 @layer components {
   body {
-    @apply bg-background-color w-screen h-screen m-0 p-0;
+    @apply bg-background-color w-screen h-screen m-0 p-0 overflow-x-hidden;
   }
   .center {
     @apply flex items-center justify-center;

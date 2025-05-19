@@ -30,7 +30,7 @@ export default function Vantagens() {
 
   return (
     <div className="py-10">
-      <p className="text-center font-semibold text-white text-2xl ">
+      <p className="text-center font-semibold text-white text-2xl">
         Vantagens do nosso banco
       </p>
       <div className="grid grid-cols-1 md:grid-cols-4 xs:grid-cols-2 items-center justify-center">
@@ -46,7 +46,7 @@ export default function Vantagens() {
               height={50}
             />
             <p className="text-white font-semibold py-2">{vantagem.title}</p>
-            <p className="text-xs text-cinza mx-12 xs:mx-0">
+            <p className="text-xs text-cinza px-12 xs:px-0">
               {vantagem.description}
             </p>
           </div>
