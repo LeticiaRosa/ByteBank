@@ -29,11 +29,11 @@ export default function Vantagens() {
   ];
 
   return (
-    <div>
-      <p className="text-center font-semibold text-white text-2xl">
+    <div className="py-10">
+      <p className="text-center font-semibold text-white text-2xl ">
         Vantagens do nosso banco
       </p>
-      <div className="flex flex-row items-center justify-center gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-4 xs:grid-cols-2 items-center justify-center">
         {vantagens.map((vantagem, index) => (
           <div
             key={index}
@@ -44,10 +44,11 @@ export default function Vantagens() {
               alt={vantagem.title}
               width={50}
               height={50}
-              className="text-verde-claro "
             />
-            <p className="text-white font-semibold p-2">{vantagem.title}</p>
-            <p className="text-xs text-cinza">{vantagem.description}</p>
+            <p className="text-white font-semibold py-2">{vantagem.title}</p>
+            <p className="text-xs text-cinza mx-12 xs:mx-0">
+              {vantagem.description}
+            </p>
           </div>
         ))}
       </div>
