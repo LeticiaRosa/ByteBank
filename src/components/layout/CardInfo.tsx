@@ -24,9 +24,9 @@ export default function CardInfo() {
       </div>
       <div className="flex flex-col items-start justify-center gap-2 py-4 px-2">
         <div className="flex flex-row items-center justify-between w-full">
-          <h3 className="text-lg font-semibold">Saldo</h3>
+          <h3 className="text-size-18 font-semibold">Saldo</h3>
           <p
-            className="text-2xl text-nowrap cursor-pointer"
+            className="text-size-25 text-nowrap cursor-pointer"
             onClick={() => setShowSaldo(!showSaldo)}
           >
             {showSaldo ? <Eye /> : <EyeClosed />}
@@ -36,9 +36,9 @@ export default function CardInfo() {
         <hr className="w-34 h-0.5 border-0 rounded-sm bg-laranja-grafico" />
         <p className="text-size-14 text-nowrap">Conta Corrente</p>
         {showSaldo ? (
-          <span className="text-white text-xl">R$ {saldo}</span>
+          <span className="text-white text-size-20">R$ {saldo}</span>
         ) : (
-          <span className="text-white text-xl">***</span>
+          <span className="text-white text-size-20">*****</span>
         )}
       </div>
     </div>

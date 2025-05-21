@@ -14,7 +14,7 @@ export default function Home() {
               <p className="text-3xl pt-10 font-semibold text-verde">
                 Experimente mais liberdade no controle da sua vida financeira.
               </p>
-              <p className="text-2xl p-10 text-verde">
+              <p className="text-size-25 p-10 text-verde">
                 Crie sua conta com a gente!
               </p>
             </div>

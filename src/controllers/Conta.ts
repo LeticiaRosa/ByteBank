@@ -1,3 +1,4 @@
+import { Transacao } from "../components/banking/NovaTransacao";
 import { ValidaDebito } from "../decorators/validaDebito";
 import { ValidaDeposito } from "../decorators/validaDeposito";
 import { Armazenador } from "./Armazenador";
@@ -6,6 +7,7 @@ export type TransacaoType = {
   tipoTransacao: TipoTransacao;
   valor: number;
   data: Date;
+  id: string;
 };
 
 export type GrupoTransacao = {
@@ -87,19 +89,24 @@ export class Conta {
     return new Date();
   }
 
-  registrarTransacao(novaTransacao: TransacaoType): void {
-    if (novaTransacao.tipoTransacao == TipoTransacao.DEPOSITO) {
-      this.depositar(novaTransacao.valor);
+  registrarTransacao(novaTransacao: Transacao): void {
+    const novaTransacaoComId = <TransacaoType>{
+      ...novaTransacao,
+      id: crypto.randomUUID(),
+      data: new Date(),
+    };
+    if (novaTransacaoComId.tipoTransacao == TipoTransacao.DEPOSITO) {
+      this.depositar(novaTransacaoComId.valor);
     } else if (
-      novaTransacao.tipoTransacao == TipoTransacao.TRANSFERENCIA ||
-      novaTransacao.tipoTransacao == TipoTransacao.PAGAMENTO_BOLETO
+      novaTransacaoComId.tipoTransacao == TipoTransacao.TRANSFERENCIA ||
+      novaTransacaoComId.tipoTransacao == TipoTransacao.PAGAMENTO_BOLETO
     ) {
-      this.debitar(novaTransacao.valor);
-      novaTransacao.valor *= -1;
+      this.debitar(novaTransacaoComId.valor);
+      novaTransacaoComId.valor *= -1;
     } else {
       throw new Error("Tipo de Transação é inválido!");
     }
-    this.transacoes.push(novaTransacao);
+    this.transacoes.push(novaTransacaoComId);
     Armazenador.salvar<string>("transacoes", JSON.stringify(this.transacoes));
   }
 

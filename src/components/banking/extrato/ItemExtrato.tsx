@@ -1,4 +1,6 @@
+import { Pencil, Trash } from "phosphor-react";
 import { Separador } from "../../ui/form/Separador";
+import Button from "../../ui/form/Button";
 
 export interface ItemExtratoProps {
   id: string;
@@ -30,7 +32,18 @@ export default function ItemExtrato({
           })}
         </p>
       </div>
-      <h6>R$ {valor}</h6>
+      <div className="flex flex-row items-center justify-between w-full">
+        <h6>R$ {valor}</h6>
+        <div className="flex flex-row gap-2">
+          <Button variant="icon">
+            <Pencil />
+          </Button>
+          <Button variant="icon">
+            <Trash />
+          </Button>
+        </div>
+      </div>
+
       <Separador size="large" />
     </div>
   );

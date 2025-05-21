@@ -6,7 +6,7 @@ import Input from "../ui/form/Input";
 import Label from "../ui/form/Label";
 import Select from "../ui/form/Select";
 import { z } from "zod";
-import { TipoTransacao, TransacaoType } from "../../controllers/Conta";
+import { TipoTransacao } from "../../controllers/Conta";
 import { useConta } from "../../contexts/ContaContext";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -24,6 +24,11 @@ const formSchema = z.object({
 
 type Inputs = z.infer<typeof formSchema>;
 
+export type Transacao = {
+  tipoTransacao: string;
+  valor: number;
+};
+
 export default function NovaTransacao() {
   const { registrarTransacao } = useConta();
   const {
@@ -35,10 +40,9 @@ export default function NovaTransacao() {
   } = useForm<Inputs>({ resolver: zodResolver(formSchema), mode: "onBlur" });
 
   function handleOnSubmit(data: Inputs) {
-    const novaTransacao: TransacaoType = {
+    const novaTransacao: Transacao = {
       tipoTransacao: data.tipoTransacao as TipoTransacao,
       valor: data.valor,
-      data: new Date(),
     };
     try {
       registrarTransacao(novaTransacao);
@@ -95,7 +99,7 @@ export default function NovaTransacao() {
             {...register("tipoTransacao")}
           />
           {errors.tipoTransacao && (
-            <p className="text-red-500 text-sm mt-1">
+            <p className="text-red-500 text-size-14 mt-1">
               {errors.tipoTransacao.message}
             </p>
           )}
@@ -111,7 +115,9 @@ export default function NovaTransacao() {
             {...register("valor")}
           />
           {errors.valor && (
-            <p className="text-red-500 text-sm mt-1">{errors.valor.message}</p>
+            <p className="text-red-500 text-size-14 mt-1">
+              {errors.valor.message}
+            </p>
           )}
         </div>
 

@@ -1,10 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import Conta, { GrupoTransacao, TransacaoType } from "../controllers/Conta";
+import Conta, { GrupoTransacao } from "../controllers/Conta";
+import { Transacao } from "../components/banking/NovaTransacao";
 
 type ContaContextType = {
   saldo: number;
   gruposTransacoes: GrupoTransacao[];
-  registrarTransacao: (transacao: TransacaoType) => void;
+  registrarTransacao: (transacao: Transacao) => void;
 };
 
 const ContaContext = createContext({} as ContaContextType);
@@ -21,7 +22,7 @@ export function ContaProvider({ children }: { children: React.ReactNode }) {
     setGruposTransacoes(Conta.getGruposTransacoes());
   }, []);
 
-  function registrarTransacao(transacao: TransacaoType) {
+  function registrarTransacao(transacao: Transacao) {
     Conta.registrarTransacao(transacao);
     setGruposTransacoes(Conta.getGruposTransacoes());
     setSaldo(Conta.getSaldo());
