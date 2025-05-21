@@ -3,6 +3,8 @@ import { useState } from "react";
 import HeaderServices from "../../components/layout/HeaderServices";
 import { Menu } from "../../components/layout/Menu";
 import { ContaProvider } from "../../contexts/ContaContext";
+import CardInfo from "../../components/layout/CardInfo";
+import Extrato from "../../components/banking/extrato/Extrato";
 
 export default function ServiceLayout({
   children,
@@ -26,7 +28,13 @@ export default function ServiceLayout({
         <div className="container pt-6 max-w-250">
           <Menu openMenu={openMenu} setOpenMenu={handleOpenMenu} />
           <ContaProvider>
-            <main className="w-full">{children}</main>
+            <div className="container-page">
+              <div className="flex flex-col gap-6 w-full">
+                <CardInfo />
+                <main className="w-full">{children}</main>
+              </div>
+              <Extrato />
+            </div>
           </ContaProvider>
         </div>
       </div>

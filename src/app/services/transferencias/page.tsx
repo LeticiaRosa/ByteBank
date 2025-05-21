@@ -1,3 +1,3 @@
 export default function Transferencias() {
-  return <div className="container-page">Transferencias</div>;
+  return <section className="card">Transferencias</section>;
 }

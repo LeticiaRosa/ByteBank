@@ -8,20 +8,29 @@ export default function Extrato() {
     <aside className="card max-md:items-center">
       <h3 className="title pb-8">Extrato</h3>
       <div className="transacoes">
-        {gruposTransacoes.map((transacao) => (
-          <div key={transacao.label}>
-            <h4 className="mes-group">{transacao.label}</h4>
-            {transacao.transacoes.map((tran) => (
-              <ItemExtrato
-                id={tran.data.toString()}
-                key={tran.data.toString()}
-                tipo={tran.tipoTransacao}
-                valor={tran.valor}
-                data={tran.data.toString()}
-              />
-            ))}
+        {gruposTransacoes?.length === 0 && (
+          <div className="flex flex-col items-center justify-center">
+            <h4 className="text-center">Nenhuma transação encontrada</h4>
+            <p className="text-center">
+              Você ainda não fez nenhuma transação. Faça uma agora mesmo!
+            </p>
           </div>
-        ))}
+        )}
+        {gruposTransacoes?.length > 0 &&
+          gruposTransacoes.map((transacao) => (
+            <div key={transacao.label}>
+              <h4 className="mes-group">{transacao.label}</h4>
+              {transacao.transacoes.map((tran) => (
+                <ItemExtrato
+                  id={tran.data.toString()}
+                  key={tran.data.toString()}
+                  tipo={tran.tipoTransacao}
+                  valor={tran.valor}
+                  data={tran.data.toString()}
+                />
+              ))}
+            </div>
+          ))}
       </div>
     </aside>
   );

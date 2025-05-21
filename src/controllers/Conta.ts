@@ -99,7 +99,6 @@ export class Conta {
     } else {
       throw new Error("Tipo de Transação é inválido!");
     }
-
     this.transacoes.push(novaTransacao);
     Armazenador.salvar<string>("transacoes", JSON.stringify(this.transacoes));
   }

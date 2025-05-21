@@ -8,6 +8,7 @@ import Select from "../ui/form/Select";
 import { z } from "zod";
 import { TipoTransacao, TransacaoType } from "../../controllers/Conta";
 import { useConta } from "../../contexts/ContaContext";
+import { toast, ToastContainer } from "react-toastify";
 
 const formSchema = z.object({
   tipoTransacao: z.enum(["Depósito", "Transferência", "Pagamento de Boleto"], {
@@ -28,7 +29,9 @@ export default function NovaTransacao() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    setError,
+    reset,
+    formState: { errors, isSubmitting },
   } = useForm<Inputs>({ resolver: zodResolver(formSchema), mode: "onBlur" });
 
   function handleOnSubmit(data: Inputs) {
@@ -37,17 +40,51 @@ export default function NovaTransacao() {
       valor: data.valor,
       data: new Date(),
     };
-    registrarTransacao(novaTransacao);
+    try {
+      registrarTransacao(novaTransacao);
+      toast("Transação Efetuada com Sucesso! ", {
+        position: "top-right",
+        type: "success",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+
+        theme: "light",
+      });
+      reset();
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : typeof error === "string"
+          ? error
+          : "Ocorreu um erro ao realizar a transação";
+
+      if (
+        errorMessage.toLowerCase().includes("saldo") ||
+        errorMessage.toLowerCase().includes("valor")
+      ) {
+        setError("valor", {
+          type: "manual",
+          message: errorMessage,
+        });
+      } else {
+        setError("tipoTransacao", {
+          type: "manual",
+          message: errorMessage,
+        });
+      }
+    }
   }
 
   return (
     <section className="card gap-2">
       <h2 className="title">Nova transação</h2>
-      <form onSubmit={handleSubmit(handleOnSubmit)}>
+      <form onSubmit={handleSubmit(handleOnSubmit)} className="pl-2">
         <div className="campo">
           <Select
-            variant="primary"
-            className="campo-input"
             options={[
               { value: "", label: "Selecione o tipo de transação" },
               { value: "Depósito", label: "Depósito" },
@@ -78,10 +115,22 @@ export default function NovaTransacao() {
           )}
         </div>
 
-        <div className="campo">
-          <Button type="submit">Concluir transação</Button>
-        </div>
+        <Button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Processando..." : "Concluir transação"}
+        </Button>
       </form>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </section>
   );
 }

@@ -3,7 +3,7 @@ import { useConta } from "../../contexts/ContaContext";
 
 export default function CardInfo() {
   const { saldo } = useConta();
-  const userName = "Letícia Rosa";
+  const userName = "Joana da Silva Oliveira";
   return (
     <div className="card bg-verde flex flex-row w-full justify-between text-white rounded-lg">
       <div className="flex flex-col gap-2 p-4">

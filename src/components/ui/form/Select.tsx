@@ -11,20 +11,22 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
 }
 
 const VARIANT_CLASSES = {
-  primary: "campo-select",
+  primary: "campo-input",
   secondary: "select-secondary",
 };
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ variant = "primary", options, ...props }, ref) => {
     return (
-      <select className={VARIANT_CLASSES[variant]} ref={ref} {...props}>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+      <div>
+        <select className={VARIANT_CLASSES[variant]} ref={ref} {...props}>
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
     );
   }
 );

@@ -11,7 +11,11 @@ const VARIANT_CLASSES = {
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ variant = "primary", ...props }, ref) => {
-    return <input className={VARIANT_CLASSES[variant]} ref={ref} {...props} />;
+    return (
+      <div>
+        <input className={VARIANT_CLASSES[variant]} ref={ref} {...props} />
+      </div>
+    );
   }
 );
 
