@@ -1,7 +1,7 @@
 import { Separador } from "../../ui/form/Separador";
 
 export interface ItemExtratoProps {
-  id: number;
+  id: string;
   tipo: string;
   valor: number;
   data: string;
