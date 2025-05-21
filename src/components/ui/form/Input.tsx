@@ -1,3 +1,5 @@
+import { forwardRef } from "react";
+
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   variant?: "primary" | "secondary";
 }
@@ -7,6 +9,12 @@ const VARIANT_CLASSES = {
   secondary: "input-secoundary",
 };
 
-export default function Input({ variant = "primary", ...props }: InputProps) {
-  return <input className={VARIANT_CLASSES[variant]} {...props} />;
-}
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ variant = "primary", ...props }, ref) => {
+    return <input className={VARIANT_CLASSES[variant]} ref={ref} {...props} />;
+  }
+);
+
+Input.displayName = "Input";
+
+export default Input;
