@@ -1,23 +1,29 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import Conta, { GrupoTransacao, TransacaoType } from "../controllers/Conta";
 
 type ContaContextType = {
   saldo: number;
-  grupoTransacoes: GrupoTransacao[];
+  gruposTransacoes: GrupoTransacao[];
   registrarTransacao: (transacao: TransacaoType) => void;
 };
 
 const ContaContext = createContext({} as ContaContextType);
 
 export function ContaProvider({ children }: { children: React.ReactNode }) {
-  const [saldo, setSaldo] = useState<number>(Conta.getSaldo());
-  const [grupoTransacoes, setGrupoTransacoes] = useState<GrupoTransacao[]>(
-    Conta.getGruposTransacoes()
+  const [saldo, setSaldo] = useState<number>(0);
+  const [gruposTransacoes, setGruposTransacoes] = useState<GrupoTransacao[]>(
+    []
   );
+
+  // Usa useEffect para acessar localStorage apenas no cliente
+  useEffect(() => {
+    setSaldo(Conta.getSaldo());
+    setGruposTransacoes(Conta.getGruposTransacoes());
+  }, []);
 
   function registrarTransacao(transacao: TransacaoType) {
     Conta.registrarTransacao(transacao);
-    setGrupoTransacoes(Conta.getGruposTransacoes());
+    setGruposTransacoes(Conta.getGruposTransacoes());
     setSaldo(Conta.getSaldo());
   }
 
@@ -25,7 +31,7 @@ export function ContaProvider({ children }: { children: React.ReactNode }) {
     <ContaContext.Provider
       value={{
         saldo,
-        grupoTransacoes,
+        gruposTransacoes,
         registrarTransacao,
       }}
     >
