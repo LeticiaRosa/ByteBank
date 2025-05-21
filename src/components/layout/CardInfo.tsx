@@ -1,12 +1,15 @@
 "use client";
+import { useState } from "react";
 import { useConta } from "../../contexts/ContaContext";
+import { Eye, EyeClosed } from "phosphor-react";
 
 export default function CardInfo() {
   const { saldo } = useConta();
+  const [showSaldo, setShowSaldo] = useState(false);
   const userName = "Joana da Silva Oliveira";
   return (
     <div className="card bg-verde flex flex-row w-full justify-between text-white rounded-lg">
-      <div className="flex flex-col gap-2 p-4">
+      <div className="flex flex-col gap-2 p-2">
         <h2 className="title text-white text-nowrap">
           Olá, {userName.split(" ")[0]}! :)
         </h2>
@@ -19,11 +22,24 @@ export default function CardInfo() {
           })}
         </p>
       </div>
-      <div className="flex flex-col items-start justify-center gap-2 py-8 px-4">
-        <h3 className="text-lg font-semibold">Saldo</h3>
+      <div className="flex flex-col items-start justify-center gap-2 py-4 px-2">
+        <div className="flex flex-row items-center justify-between w-full">
+          <h3 className="text-lg font-semibold">Saldo</h3>
+          <p
+            className="text-2xl text-nowrap cursor-pointer"
+            onClick={() => setShowSaldo(!showSaldo)}
+          >
+            {showSaldo ? <Eye /> : <EyeClosed />}
+          </p>
+        </div>
+
         <hr className="w-34 h-0.5 border-0 rounded-sm bg-laranja-grafico" />
         <p className="text-size-14 text-nowrap">Conta Corrente</p>
-        <p className="text-2xl text-nowrap">R$ {saldo}</p>
+        {showSaldo ? (
+          <span className="text-white text-xl">R$ {saldo}</span>
+        ) : (
+          <span className="text-white text-xl">***</span>
+        )}
       </div>
     </div>
   );

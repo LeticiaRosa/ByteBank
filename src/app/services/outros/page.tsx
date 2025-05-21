@@ -1,3 +1,3 @@
 export default function Outros() {
-  return <div className="container-page">Outros</div>;
+  return <section className="card">Outros</section>;
 }
