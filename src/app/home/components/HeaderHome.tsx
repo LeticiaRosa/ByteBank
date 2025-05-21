@@ -22,7 +22,6 @@ export default function HeaderHome() {
           height={40}
           className="md:hidden flex"
         />
-
         <LinkButton href="/sobre">Sobre</LinkButton>
         <LinkButton href="/">Serviços</LinkButton>
       </div>

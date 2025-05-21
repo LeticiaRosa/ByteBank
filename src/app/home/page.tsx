@@ -5,7 +5,7 @@ import Footer from "../../components/layout/Footer";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full ">
+    <div className="flex flex-col items-center justify-center w-full h-full">
       <HeaderHome />
       <div className="flex flex-col items-center justify-center w-full h-full bg-gradient-to-b from-white to-verde pb-4">
         <div className="container pt-6 max-w-250 flex flex-col items-center ">

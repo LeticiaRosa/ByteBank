@@ -1,3 +1,5 @@
+"use client";
+import Conta from "../../../controllers/Conta";
 import ItemExtrato from "./ItemExtrato";
 
 interface Transacao {
@@ -19,6 +21,9 @@ interface Extrato {
 }
 
 export default function Extrato() {
+  console.log("Extrato");
+  const transacoes = Conta.getGruposTransacoes();
+  console.log(transacoes);
   const extrato: Transacao[] = [
     {
       id: 1,
