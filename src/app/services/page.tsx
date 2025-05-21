@@ -6,11 +6,7 @@ export default function Services() {
   return (
     <div className="container-page">
       <div className="flex flex-col gap-6 w-full">
-        <CardInfo
-          userName="Letícia Rosa de Oliveira"
-          date={new Date()}
-          balance={10000.0}
-        />
+        <CardInfo />
         <NovaTransacao />
       </div>
       <Extrato />

@@ -21,7 +21,7 @@ export enum TipoTransacao {
 
 export class Conta {
   protected nome: string;
-  protected saldo: number = Armazenador.obter<number>("saldo") || 0;
+  protected saldo: number = Number(Armazenador.obter<number>("saldo")) || 0;
   private transacoes: TransacaoType[] = (() => {
     try {
       const storedData = Armazenador.obter<string>(

@@ -6,7 +6,8 @@ import Input from "../ui/form/Input";
 import Label from "../ui/form/Label";
 import Select from "../ui/form/Select";
 import { z } from "zod";
-import Conta, { TipoTransacao, TransacaoType } from "../../controllers/Conta";
+import { TipoTransacao, TransacaoType } from "../../controllers/Conta";
+import { useConta } from "../../contexts/ContaContext";
 
 const formSchema = z.object({
   tipoTransacao: z.enum(["Depósito", "Transferência", "Pagamento de Boleto"], {
@@ -23,6 +24,7 @@ const formSchema = z.object({
 type Inputs = z.infer<typeof formSchema>;
 
 export default function NovaTransacao() {
+  const { registrarTransacao } = useConta();
   const {
     register,
     handleSubmit,
@@ -35,7 +37,7 @@ export default function NovaTransacao() {
       valor: data.valor,
       data: new Date(),
     };
-    Conta.registrarTransacao(novaTransacao);
+    registrarTransacao(novaTransacao);
   }
 
   return (
