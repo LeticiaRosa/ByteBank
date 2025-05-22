@@ -1,3 +1,3 @@
 export default function Investimentos() {
-  return <section className="card">Investimentos</section>;
+  return <section className="card min-h-50">Investimentos</section>;
 }

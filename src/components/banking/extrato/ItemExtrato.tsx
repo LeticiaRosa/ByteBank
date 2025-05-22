@@ -2,11 +2,12 @@ import { Pencil, Trash } from "phosphor-react";
 import { Separador } from "../../ui/form/Separador";
 import Button from "../../ui/form/Button";
 
-export interface ItemExtratoProps {
-  id: string;
+interface ItemExtratoProps {
+  id: number;
   tipo: string;
   valor: number;
   data: string;
+  onEditar?: (id: number) => void;
 }
 
 export default function ItemExtrato({
@@ -14,7 +15,15 @@ export default function ItemExtrato({
   tipo,
   valor,
   data,
+  onEditar,
 }: ItemExtratoProps) {
+  const formatadorValor = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+
+  const valorFormatado = formatadorValor.format(valor);
+
   return (
     <div
       key={id}
@@ -35,7 +44,12 @@ export default function ItemExtrato({
       <div className="flex flex-row items-center justify-between w-full">
         <h6>R$ {valor}</h6>
         <div className="flex flex-row gap-2">
-          <Button variant="icon">
+          <Button
+            variant="icon"
+            onClick={() => {
+              if (onEditar) onEditar(id);
+            }}
+          >
             <Pencil />
           </Button>
           <Button variant="icon">

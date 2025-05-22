@@ -9,6 +9,7 @@ import { z } from "zod";
 import { TipoTransacao } from "../../controllers/Conta";
 import { useConta } from "../../contexts/ContaContext";
 import { toast, ToastContainer } from "react-toastify";
+import { useEffect } from "react";
 
 const formSchema = z.object({
   tipoTransacao: z.enum(["Depósito", "Transferência", "Pagamento de Boleto"], {
@@ -27,44 +28,99 @@ type Inputs = z.infer<typeof formSchema>;
 export type Transacao = {
   tipoTransacao: string;
   valor: number;
+  id?: string | number;
 };
 
-export default function NovaTransacao() {
-  const { registrarTransacao } = useConta();
+interface TransacaoFormProps {
+  transacaoParaEditar?: Transacao;
+  onSave?: (transacao: Transacao) => void;
+  modo?: "criar" | "editar";
+}
+
+export default function TransacaoForm({
+  transacaoParaEditar,
+  onSave,
+  modo = "criar",
+}: TransacaoFormProps) {
+  const { registrarTransacao, atualizarTransacao } = useConta();
   const {
     register,
     handleSubmit,
     setError,
     reset,
+    setValue,
     formState: { errors, isSubmitting },
-  } = useForm<Inputs>({ resolver: zodResolver(formSchema), mode: "onBlur" });
+  } = useForm<Inputs>({
+    resolver: zodResolver(formSchema),
+    mode: "onBlur",
+    defaultValues: {
+      tipoTransacao:
+        (transacaoParaEditar?.tipoTransacao as TipoTransacao) || undefined,
+      valor: transacaoParaEditar?.valor || undefined,
+    },
+  });
+
+  useEffect(() => {
+    // Update form when transacaoParaEditar changes
+    if (transacaoParaEditar) {
+      setValue(
+        "tipoTransacao",
+        transacaoParaEditar.tipoTransacao as TipoTransacao
+      );
+      setValue("valor", transacaoParaEditar.valor);
+    }
+  }, [transacaoParaEditar, setValue]);
 
   function handleOnSubmit(data: Inputs) {
-    const novaTransacao: Transacao = {
+    const transacao: Transacao = {
       tipoTransacao: data.tipoTransacao as TipoTransacao,
       valor: data.valor,
+      ...(transacaoParaEditar?.id ? { id: transacaoParaEditar.id } : {}),
     };
-    try {
-      registrarTransacao(novaTransacao);
-      toast("Transação Efetuada com Sucesso! ", {
-        position: "top-right",
-        type: "success",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
 
-        theme: "light",
-      });
-      reset();
+    try {
+      if (modo === "editar" && transacaoParaEditar) {
+        atualizarTransacao?.(transacao);
+        toast("Transação Atualizada com Sucesso!", {
+          position: "top-right",
+          type: "success",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "light",
+        });
+      } else {
+        registrarTransacao(transacao);
+        toast("Transação Efetuada com Sucesso!", {
+          position: "top-right",
+          type: "success",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "light",
+        });
+      }
+
+      // If custom save handler provided, call it
+      if (onSave) {
+        onSave(transacao);
+      }
+
+      // Only reset if creating a new transaction
+      if (modo === "criar") {
+        reset();
+      }
     } catch (error) {
       const errorMessage =
         error instanceof Error
           ? error.message
           : typeof error === "string"
           ? error
-          : "Ocorreu um erro ao realizar a transação";
+          : "Ocorreu um erro ao processar a transação";
 
       if (
         errorMessage.toLowerCase().includes("saldo") ||
@@ -83,9 +139,13 @@ export default function NovaTransacao() {
     }
   }
 
+  const formTitle = modo === "criar" ? "Nova transação" : "Editar transação";
+  const submitButtonText =
+    modo === "criar" ? "Concluir transação" : "Atualizar transação";
+
   return (
-    <section className="card gap-2">
-      <h2 className="title">Nova transação</h2>
+    <section className=" gap-2">
+      <h2 className="title">{formTitle}</h2>
       <form onSubmit={handleSubmit(handleOnSubmit)} className="pl-2">
         <div className="campo">
           <Select
@@ -122,7 +182,7 @@ export default function NovaTransacao() {
         </div>
 
         <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Processando..." : "Concluir transação"}
+          {isSubmitting ? "Processando..." : submitButtonText}
         </Button>
       </form>
       <ToastContainer

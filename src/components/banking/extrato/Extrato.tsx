@@ -1,12 +1,32 @@
 "use client";
+import { X } from "phosphor-react";
 import { useConta } from "../../../contexts/ContaContext";
+import TransacaoForm from "../TransacaoForm";
 import ItemExtrato from "./ItemExtrato";
+import { useState } from "react";
 
 export default function Extrato() {
   const { gruposTransacoes } = useConta();
+  const [transacaoParaEditar, setTransacaoParaEditar] = useState(null);
+  const [modalAberto, setModalAberto] = useState(false);
+
+  const abrirModal = (transacao) => {
+    setTransacaoParaEditar(transacao);
+    setModalAberto(true);
+  };
+
+  const fecharModal = () => {
+    setTransacaoParaEditar(null);
+    setModalAberto(false);
+  };
+
+  const handleSave = () => {
+    // Após salvar, feche o modal
+    fecharModal();
+  };
 
   return (
-    <aside className="card max-md:items-center">
+    <aside className="card max-md:items-center relative">
       <h3 className="title pb-8">Extrato</h3>
       <div className="transacoes">
         {gruposTransacoes?.length === 0 && (
@@ -25,11 +45,33 @@ export default function Extrato() {
                   tipo={tran.tipoTransacao}
                   valor={tran.valor}
                   data={tran.data.toString()}
+                  onEditar={() => abrirModal(tran)}
                 />
               ))}
             </div>
           ))}
       </div>
+
+      {/* Modal de edição */}
+      {modalAberto && (
+        <div
+          className="modal flex items-center justify-center z-50"
+          onClick={() => fecharModal()}
+        >
+          <div className="bg-white rounded-lg p-4 max-w-md w-full">
+            <div className="flex justify-end">
+              <button onClick={fecharModal}>
+                <X />
+              </button>
+            </div>
+            <TransacaoForm
+              modo="editar"
+              transacaoParaEditar={transacaoParaEditar}
+              onSave={handleSave}
+            />
+          </div>
+        </div>
+      )}
     </aside>
   );
 }

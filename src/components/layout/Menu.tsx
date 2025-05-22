@@ -4,6 +4,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import LinkButton from "../ui/form/Link";
 import { Separador } from "../ui/form/Separador";
+import { X } from "phosphor-react";
 
 interface MenuProps {
   openMenu: boolean;
@@ -31,20 +32,16 @@ export function Menu({ openMenu, setOpenMenu }: MenuProps) {
 
   return (
     <>
-      {openMenu && (
-        <div className="menu-modal" onClick={() => setOpenMenu()}></div>
-      )}
+      {openMenu && <div className="modal" onClick={() => setOpenMenu()}></div>}
       <nav id="menu" className={`menu  ${openMenu ? "menu-open" : ""}`}>
         <ul className="flex place-content-between md:flex-col md:gap-4">
           <div className="flex items-end justify-end">
-            <Image
-              src="/close.png"
-              alt="Close"
-              width={20}
-              height={20}
+            <button
               className={`${openMenu ? "flex " : "hidden"}`}
               onClick={() => setOpenMenu()}
-            />
+            >
+              <X />
+            </button>
           </div>
           {menuItems.map((item) => (
             <li
