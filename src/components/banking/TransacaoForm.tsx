@@ -8,9 +8,9 @@ import Select from "../ui/form/Select";
 import { z } from "zod";
 import { TipoTransacao } from "../../controllers/Conta";
 import { useConta } from "../../contexts/ContaContext";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { useEffect } from "react";
-
+import "react-toastify/dist/ReactToastify.css"; // Adicione esta linha
 const formSchema = z.object({
   tipoTransacao: z.enum(["Depósito", "Transferência", "Pagamento de Boleto"], {
     message: "Tipo de transação é obrigatório",
@@ -72,7 +72,6 @@ export default function TransacaoForm({
   }, [transacaoParaEditar, setValue]);
 
   function handleOnSubmit(data: Inputs) {
-    console.log(data);
     const transacao: Transacao = {
       tipoTransacao: data.tipoTransacao as TipoTransacao,
       valor: data.valor,
@@ -82,27 +81,13 @@ export default function TransacaoForm({
     try {
       if (modo === "editar" && transacaoParaEditar) {
         atualizarTransacao?.(transacao);
-        toast("Transação Atualizada com Sucesso!", {
+        toast.success("Transação Atualizada com Sucesso!", {
           position: "top-right",
-          type: "success",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "light",
         });
       } else {
         registrarTransacao(transacao);
-        toast("Transação Efetuada com Sucesso!", {
+        toast.success("Transação Efetuada com Sucesso!", {
           position: "top-right",
-          type: "success",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          theme: "light",
         });
       }
 
@@ -186,18 +171,6 @@ export default function TransacaoForm({
           {isSubmitting ? "Processando..." : submitButtonText}
         </Button>
       </form>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </section>
   );
 }

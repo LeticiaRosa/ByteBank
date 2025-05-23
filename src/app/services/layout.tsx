@@ -5,6 +5,7 @@ import { Menu } from "../../components/layout/Menu";
 import { ContaProvider } from "../../contexts/ContaContext";
 import CardInfo from "../../components/layout/CardInfo";
 import Extrato from "../../components/banking/extrato/Extrato";
+import { ToastContainer } from "react-toastify";
 
 export default function ServiceLayout({
   children,
@@ -34,6 +35,11 @@ export default function ServiceLayout({
                 <main className="w-full">{children}</main>
               </div>
               <Extrato />
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                theme="light"
+              />
             </div>
           </ContaProvider>
         </div>

@@ -17,7 +17,6 @@ export function ContaProvider({ children }: { children: React.ReactNode }) {
     []
   );
 
-  // Usa useEffect para acessar localStorage apenas no cliente
   useEffect(() => {
     setSaldo(Conta.getSaldo());
     setGruposTransacoes(Conta.getGruposTransacoes());
@@ -30,7 +29,6 @@ export function ContaProvider({ children }: { children: React.ReactNode }) {
   }
 
   function atualizarTransacao(transacaoAtualizada: Transacao) {
-    console.log("Atual transacao", transacaoAtualizada);
     Conta.atualizarTransacao(transacaoAtualizada);
     setGruposTransacoes(Conta.getGruposTransacoes());
     setSaldo(Conta.getSaldo());
