@@ -6,9 +6,6 @@ export const metadata: Metadata = {
   description: "Seu banco digital",
   keywords: "banco, digital, byte bank",
   creator: "Letícia Rosa",
-  icons: {
-    icon: "/favicon-16x16.png",
-  },
 };
 
 export default function RootLayout({
@@ -18,6 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="h-full w-full">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body>
         <main className="w-full">{children}</main>
       </body>
