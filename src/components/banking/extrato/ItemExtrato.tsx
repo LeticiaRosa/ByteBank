@@ -37,7 +37,7 @@ export default function ItemExtrato({
         </p>
       </div>
       <div className="flex flex-row items-center justify-between w-full">
-        <h6>{valorFormatado}</h6>
+        <h6 className="pr-4">{valorFormatado}</h6>
         <div className="flex flex-row gap-2">
           <Button
             variant="icon"
