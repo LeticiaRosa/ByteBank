@@ -2,11 +2,14 @@
 import { useState } from "react";
 import { useConta } from "../../contexts/ContaContext";
 import { Eye, EyeClosed } from "phosphor-react";
+import { formatadorValor } from "../../utils/formatadorValor";
 
 export default function CardInfo() {
   const { saldo } = useConta();
   const [showSaldo, setShowSaldo] = useState(false);
   const userName = "Joana da Silva Oliveira";
+  const saldoFormatado = formatadorValor.format(saldo);
+
   return (
     <div className="card bg-verde flex flex-row w-full justify-between text-white rounded-lg">
       <div className="flex flex-col gap-2 p-2">
@@ -36,7 +39,7 @@ export default function CardInfo() {
         <hr className="w-34 h-0.5 border-0 rounded-sm bg-laranja-grafico" />
         <p className="text-size-14 text-nowrap">Conta Corrente</p>
         {showSaldo ? (
-          <span className="text-white text-size-20">R$ {saldo}</span>
+          <span className="text-white text-size-20">{saldoFormatado}</span>
         ) : (
           <span className="text-white text-size-20">*****</span>
         )}

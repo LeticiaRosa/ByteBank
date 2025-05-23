@@ -1,11 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import Conta, { GrupoTransacao } from "../controllers/Conta";
-import { Transacao } from "../components/banking/NovaTransacao";
+import { Transacao } from "../components/banking/TransacaoForm";
 
 type ContaContextType = {
   saldo: number;
   gruposTransacoes: GrupoTransacao[];
   registrarTransacao: (transacao: Transacao) => void;
+  atualizarTransacao: (transacao: Transacao) => void;
 };
 
 const ContaContext = createContext({} as ContaContextType);
@@ -28,12 +29,20 @@ export function ContaProvider({ children }: { children: React.ReactNode }) {
     setSaldo(Conta.getSaldo());
   }
 
+  function atualizarTransacao(transacaoAtualizada: Transacao) {
+    console.log("Atual transacao", transacaoAtualizada);
+    Conta.atualizarTransacao(transacaoAtualizada);
+    setGruposTransacoes(Conta.getGruposTransacoes());
+    setSaldo(Conta.getSaldo());
+  }
+
   return (
     <ContaContext.Provider
       value={{
         saldo,
         gruposTransacoes,
         registrarTransacao,
+        atualizarTransacao,
       }}
     >
       {children}

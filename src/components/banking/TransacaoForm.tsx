@@ -32,7 +32,7 @@ export type Transacao = {
 };
 
 interface TransacaoFormProps {
-  transacaoParaEditar?: Transacao;
+  transacaoParaEditar?: Transacao | null;
   onSave?: (transacao: Transacao) => void;
   modo?: "criar" | "editar";
 }
@@ -72,6 +72,7 @@ export default function TransacaoForm({
   }, [transacaoParaEditar, setValue]);
 
   function handleOnSubmit(data: Inputs) {
+    console.log(data);
     const transacao: Transacao = {
       tipoTransacao: data.tipoTransacao as TipoTransacao,
       valor: data.valor,

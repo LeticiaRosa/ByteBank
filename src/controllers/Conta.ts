@@ -1,4 +1,4 @@
-import { Transacao } from "../components/banking/NovaTransacao";
+import { Transacao } from "../components/banking/TransacaoForm";
 import { ValidaDebito } from "../decorators/validaDebito";
 import { ValidaDeposito } from "../decorators/validaDeposito";
 import { Armazenador } from "./Armazenador";
@@ -120,6 +120,39 @@ export class Conta {
   depositar(valor: number): void {
     this.saldo += valor;
     Armazenador.salvar<string>("saldo", this.saldo.toString());
+  }
+
+  atualizarTransacao(novaTransacao: Transacao): void {
+    const index = this.transacoes.findIndex(
+      (transacao) => transacao.id === novaTransacao.id
+    );
+    const novaTransacaoComNovaData = <TransacaoType>{
+      ...novaTransacao,
+      data: new Date(),
+    };
+
+    if (index !== -1) {
+      const cloneTransacoes = this.transacoes;
+      cloneTransacoes[index] = novaTransacaoComNovaData;
+      const valorFinal = cloneTransacoes.reduce((acc, currentValue) => {
+        if (currentValue.tipoTransacao === TipoTransacao.DEPOSITO) {
+          acc += currentValue.valor;
+        } else {
+          acc -= currentValue.valor;
+        }
+        return acc;
+      }, 0);
+
+      if (valorFinal < 0) {
+        throw new Error("Saldo insuficiente para a transação");
+      }
+      this.saldo = valorFinal;
+      this.transacoes[index] = novaTransacaoComNovaData;
+      Armazenador.salvar<string>("saldo", JSON.stringify(this.saldo));
+      Armazenador.salvar<string>("transacoes", JSON.stringify(this.transacoes));
+    } else {
+      throw new Error("Transação não encontrada");
+    }
   }
 }
 

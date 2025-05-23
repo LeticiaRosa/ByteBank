@@ -1,16 +1,17 @@
 "use client";
 import { X } from "phosphor-react";
 import { useConta } from "../../../contexts/ContaContext";
-import TransacaoForm from "../TransacaoForm";
+import TransacaoForm, { Transacao } from "../TransacaoForm";
 import ItemExtrato from "./ItemExtrato";
 import { useState } from "react";
 
 export default function Extrato() {
   const { gruposTransacoes } = useConta();
-  const [transacaoParaEditar, setTransacaoParaEditar] = useState(null);
+  const [transacaoParaEditar, setTransacaoParaEditar] =
+    useState<Transacao | null>(null);
   const [modalAberto, setModalAberto] = useState(false);
 
-  const abrirModal = (transacao) => {
+  const abrirModal = (transacao: Transacao) => {
     setTransacaoParaEditar(transacao);
     setModalAberto(true);
   };
@@ -40,7 +41,7 @@ export default function Extrato() {
               <h4 className="mes-group">{transacao.label}</h4>
               {transacao.transacoes.map((tran) => (
                 <ItemExtrato
-                  id={tran.id}
+                  id={Number(tran.id)}
                   key={tran.id}
                   tipo={tran.tipoTransacao}
                   valor={tran.valor}
@@ -54,10 +55,7 @@ export default function Extrato() {
 
       {/* Modal de edição */}
       {modalAberto && (
-        <div
-          className="modal flex items-center justify-center z-50"
-          onClick={() => fecharModal()}
-        >
+        <div className="modal flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-4 max-w-md w-full">
             <div className="flex justify-end">
               <button onClick={fecharModal}>
