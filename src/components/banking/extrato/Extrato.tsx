@@ -1,9 +1,9 @@
 "use client";
-import { X } from "phosphor-react";
 import { useConta } from "../../../contexts/ContaContext";
 import TransacaoForm, { Transacao } from "../TransacaoForm";
 import ItemExtrato from "./ItemExtrato";
 import { useState } from "react";
+import Modal from "../../ui/Modal";
 
 export default function Extrato() {
   const { gruposTransacoes } = useConta();
@@ -41,7 +41,7 @@ export default function Extrato() {
               <h4 className="mes-group">{transacao.label}</h4>
               {transacao.transacoes.map((tran) => (
                 <ItemExtrato
-                  id={Number(tran.id)}
+                  id={tran.id}
                   key={tran.id}
                   tipo={tran.tipoTransacao}
                   valor={tran.valor}
@@ -55,20 +55,13 @@ export default function Extrato() {
 
       {/* Modal de edição */}
       {modalAberto && (
-        <div className="modal flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-4 max-w-md w-full">
-            <div className="flex justify-end">
-              <button onClick={fecharModal}>
-                <X />
-              </button>
-            </div>
-            <TransacaoForm
-              modo="editar"
-              transacaoParaEditar={transacaoParaEditar}
-              onSave={handleSave}
-            />
-          </div>
-        </div>
+        <Modal onClose={fecharModal}>
+          <TransacaoForm
+            modo="editar"
+            transacaoParaEditar={transacaoParaEditar}
+            onSave={handleSave}
+          />
+        </Modal>
       )}
     </aside>
   );

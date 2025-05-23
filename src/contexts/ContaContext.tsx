@@ -7,6 +7,7 @@ type ContaContextType = {
   gruposTransacoes: GrupoTransacao[];
   registrarTransacao: (transacao: Transacao) => void;
   atualizarTransacao: (transacao: Transacao) => void;
+  removerTransacao: (id: string) => void;
 };
 
 const ContaContext = createContext({} as ContaContextType);
@@ -34,6 +35,12 @@ export function ContaProvider({ children }: { children: React.ReactNode }) {
     setSaldo(Conta.getSaldo());
   }
 
+  function removerTransacao(id: string) {
+    Conta.excluirTransacao(id);
+    setGruposTransacoes(Conta.getGruposTransacoes());
+    setSaldo(Conta.getSaldo());
+  }
+
   return (
     <ContaContext.Provider
       value={{
@@ -41,6 +48,7 @@ export function ContaProvider({ children }: { children: React.ReactNode }) {
         gruposTransacoes,
         registrarTransacao,
         atualizarTransacao,
+        removerTransacao,
       }}
     >
       {children}

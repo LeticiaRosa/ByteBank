@@ -131,12 +131,15 @@ export default function TransacaoForm({
 
   return (
     <section className=" gap-2">
-      <h2 className="title">{formTitle}</h2>
+      <h2 className="title pb-4">{formTitle}</h2>
       <form onSubmit={handleSubmit(handleOnSubmit)} className="pl-2">
         <div className="campo">
+          <Label htmlFor="tipoTransacao" className="mb-1">
+            Tipo de Transação:
+          </Label>
           <Select
             options={[
-              { value: "", label: "Selecione o tipo de transação" },
+              { value: "", label: "Selecione" },
               { value: "Depósito", label: "Depósito" },
               { value: "Transferência", label: "Transferência" },
               { value: "Pagamento de Boleto", label: "Pagamento de Boleto" },
@@ -150,7 +153,7 @@ export default function TransacaoForm({
             </p>
           )}
         </div>
-        <div className="campo">
+        <div className="campo pb-6">
           <Label htmlFor="valor">Valor:</Label>
           <Input
             type="number"

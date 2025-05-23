@@ -102,7 +102,7 @@ export class Conta {
       novaTransacaoComId.tipoTransacao == TipoTransacao.PAGAMENTO_BOLETO
     ) {
       this.debitar(novaTransacaoComId.valor);
-      novaTransacaoComId.valor *= -1;
+      novaTransacaoComId.valor *= 1;
     } else {
       throw new Error("Tipo de Transação é inválido!");
     }
@@ -122,6 +122,26 @@ export class Conta {
     Armazenador.salvar<string>("saldo", this.saldo.toString());
   }
 
+  private calcularSaldoFinal(
+    transacoes: TransacaoType[],
+    operacao: string
+  ): number {
+    const valorFinal = transacoes.reduce((acc, currentValue) => {
+      if (currentValue.tipoTransacao === TipoTransacao.DEPOSITO) {
+        acc += currentValue.valor;
+      } else {
+        acc -= currentValue.valor;
+      }
+      return acc;
+    }, 0);
+
+    if (valorFinal < 0) {
+      throw new Error(`Saldo insuficiente para a ${operacao}`);
+    }
+
+    return valorFinal;
+  }
+
   atualizarTransacao(novaTransacao: Transacao): void {
     const index = this.transacoes.findIndex(
       (transacao) => transacao.id === novaTransacao.id
@@ -132,21 +152,11 @@ export class Conta {
     };
 
     if (index !== -1) {
-      const cloneTransacoes = this.transacoes;
+      const cloneTransacoes = [...this.transacoes];
       cloneTransacoes[index] = novaTransacaoComNovaData;
-      const valorFinal = cloneTransacoes.reduce((acc, currentValue) => {
-        if (currentValue.tipoTransacao === TipoTransacao.DEPOSITO) {
-          acc += currentValue.valor;
-        } else {
-          acc -= currentValue.valor;
-        }
-        return acc;
-      }, 0);
 
-      if (valorFinal < 0) {
-        throw new Error("Saldo insuficiente para a transação");
-      }
-      this.saldo = valorFinal;
+      this.saldo = this.calcularSaldoFinal(cloneTransacoes, "transação");
+
       this.transacoes[index] = novaTransacaoComNovaData;
       Armazenador.salvar<string>("saldo", JSON.stringify(this.saldo));
       Armazenador.salvar<string>("transacoes", JSON.stringify(this.transacoes));
@@ -154,17 +164,28 @@ export class Conta {
       throw new Error("Transação não encontrada");
     }
   }
-}
 
-// export class ContaPremium extends Conta {
-//   registrarTransacao(transacao: TransacaoType): void {
-//     if (transacao.tipoTransacao === TipoTransacao.DEPOSITO) {
-//       console.log("Ganhou um bonus de 0.50 centavois");
-//       transacao.valor += 0.5;
-//     }
-//     super.registrarTransacao(transacao);
-//   }
-// }
+  excluirTransacao(id: string): void {
+    console.log("id", id);
+    const index = this.transacoes.findIndex((transacao) => transacao.id === id);
+    console.log("index", index);
+    if (index !== -1) {
+      const cloneTransacoes = [...this.transacoes];
+      cloneTransacoes.splice(index, 1);
+
+      this.saldo = this.calcularSaldoFinal(
+        cloneTransacoes,
+        "exclusão da transação"
+      );
+
+      Armazenador.salvar<string>("saldo", JSON.stringify(this.saldo));
+      this.transacoes.splice(index, 1);
+      Armazenador.salvar<string>("transacoes", JSON.stringify(this.transacoes));
+    } else {
+      throw new Error("Transação não encontrada");
+    }
+  }
+}
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default new Conta("Conta Corrente");

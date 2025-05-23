@@ -79,10 +79,10 @@
     @apply flex flex-col py-2 gap-2;
   }
   .campo-input {
-    @apply h-10 border-2 border-verde-claro bg-white rounded-md p-2 text-black text-center focus:border-verde focus:outline-none text-size-14;
+    @apply h-10 border-2 border-verde-claro bg-white rounded-md p-2 text-black text-center focus:border-verde focus:outline-none text-size-14 min-w-45;
   }
   .btn {
-    @apply bg-verde text-white rounded-md py-2 px-6 text-center font-semibold cursor-pointer transition-colors duration-300 ease-in-out hover:bg-verde-claro;
+    @apply bg-verde text-white rounded-md py-2 px-6 text-center font-semibold cursor-pointer transition-colors duration-300 ease-in-out hover:bg-verde-claro min-w-45;
   }
 
   .btn-secoundary {

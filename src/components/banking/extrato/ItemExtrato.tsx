@@ -2,13 +2,15 @@ import { Pencil, Trash } from "phosphor-react";
 import { Separador } from "../../ui/form/Separador";
 import Button from "../../ui/form/Button";
 import { formatadorValor } from "../../../utils/formatadorValor";
+import { useConta } from "../../../contexts/ContaContext";
+import { toast } from "react-toastify";
 
 interface ItemExtratoProps {
-  id: number;
+  id: string;
   tipo: string;
   valor: number;
   data: string;
-  onEditar?: (id: number) => void;
+  onEditar?: (id: string) => void;
 }
 
 export default function ItemExtrato({
@@ -18,7 +20,19 @@ export default function ItemExtrato({
   data,
   onEditar,
 }: ItemExtratoProps) {
+  const { removerTransacao } = useConta();
   const valorFormatado = formatadorValor.format(valor);
+
+  const handleExcluir = (id: string) => {
+    try {
+      if (confirm("Tem certeza que deseja excluir esta transação?")) {
+        removerTransacao(id);
+        toast.success("Transação excluída com sucesso!");
+      }
+    } catch {
+      toast.error("Erro ao excluir a transação.");
+    }
+  };
   return (
     <div
       key={id}
@@ -47,7 +61,7 @@ export default function ItemExtrato({
           >
             <Pencil />
           </Button>
-          <Button variant="icon">
+          <Button variant="icon" onClick={() => handleExcluir(id)}>
             <Trash />
           </Button>
         </div>
