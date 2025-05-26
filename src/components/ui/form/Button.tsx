@@ -1,5 +1,5 @@
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "icon";
+  variant?: "primary" | "secondary" | "outline" | "icon" | "danger";
 }
 
 const VARIANT_CLASSES = {
@@ -7,6 +7,7 @@ const VARIANT_CLASSES = {
   secondary: "btn-secoundary",
   outline: "btn-outline",
   icon: "btn-icon",
+  danger: "btn-danger",
 };
 
 export default function Button({
