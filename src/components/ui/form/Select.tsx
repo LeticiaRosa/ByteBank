@@ -18,7 +18,7 @@ const VARIANT_CLASSES = {
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ variant = "primary", options, ...props }, ref) => {
     return (
-      <div>
+      <div className={props.className || ""}>
         <select className={VARIANT_CLASSES[variant]} ref={ref} {...props}>
           {options.map((option) => (
             <option key={option.value} value={option.value}>

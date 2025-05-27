@@ -11,8 +11,9 @@ export default function CardInfo() {
   const saldoFormatado = formatadorValor.format(saldo);
 
   return (
-    <div className="card bg-verde flex flex-row w-full justify-between text-white rounded-lg">
-      <div className="flex flex-col gap-2 p-2">
+    // xs:flex-row md:flex-col lg:flex-row
+    <div className="card bg-verde grid grid-cols-4 xs:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 items-start  w-full text-white rounded-lg">
+      <div className="grid col-span-4 col-start-1 xs:col-span-1 md:col-span-4 md:col-start-1 lg:col-span-1">
         <h2 className="title text-white text-nowrap">
           Olá, {userName.split(" ")[0]}! :)
         </h2>
@@ -25,7 +26,7 @@ export default function CardInfo() {
           })}
         </p>
       </div>
-      <div className="flex flex-col items-start justify-center gap-2 py-4 px-2">
+      <div className="grid col-span-4 col-start-3 xs:col-span-1 md:col-span-3 md:col-start-3 lg:col-span-1 items-start justify-end gap-1 pt-6 lg:pt-14 px-2 ">
         <div className="flex flex-row items-center justify-between w-full">
           <h3 className="text-size-18 font-semibold">Saldo</h3>
           <p

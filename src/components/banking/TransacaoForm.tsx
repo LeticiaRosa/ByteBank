@@ -137,7 +137,7 @@ export default function TransacaoForm({
         className="pl-2 flex w-full"
       >
         <div className="flex flex-col w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap:2 lg:gap-4 justify-between">
             <div className="campo">
               <Label htmlFor="tipoTransacao" className="">
                 Tipo de Transação:
@@ -169,6 +169,7 @@ export default function TransacaoForm({
                 placeholder="0,00"
                 step=".01"
                 min="0.01"
+                // className="max-w-40"
                 {...register("valor")}
               />
               {errors.valor && (
