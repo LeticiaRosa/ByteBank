@@ -11,7 +11,6 @@ export default function CardInfo() {
   const saldoFormatado = formatadorValor.format(saldo);
 
   return (
-    // xs:flex-row md:flex-col lg:flex-row
     <div className="card bg-verde grid grid-cols-4 xs:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 items-start  w-full text-white rounded-lg">
       <div className="grid col-span-4 col-start-1 xs:col-span-1 md:col-span-4 md:col-start-1 lg:col-span-1">
         <h2 className="title text-white text-nowrap">

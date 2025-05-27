@@ -1,34 +1,19 @@
 "use client";
 
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import LinkButton from "../ui/form/Link";
 import { Separador } from "../ui/form/Separador";
 import { X } from "phosphor-react";
+import { menuItemsType } from "../../config/menuItemsType";
 
 interface MenuProps {
   openMenu: boolean;
   setOpenMenu: (action?: string) => void;
+  menuItems: menuItemsType;
 }
 
-export function Menu({ openMenu, setOpenMenu }: MenuProps) {
+export function Menu({ openMenu, setOpenMenu, menuItems }: MenuProps) {
   const pathname = usePathname();
-
-  const menuItems = [
-    { href: "/services", label: "Início" },
-    {
-      href: "/services/transferencias",
-      label: "Transferências",
-    },
-    {
-      href: "/services/investimentos",
-      label: "Investimentos",
-    },
-    {
-      href: "/services/outros",
-      label: "Outros Serviços",
-    },
-  ];
 
   return (
     <>

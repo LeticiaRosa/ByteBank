@@ -130,15 +130,15 @@ export default function TransacaoForm({
     modo === "criar" ? "Concluir transação" : "Atualizar transação";
 
   return (
-    <section className="gap-2 w-full">
+    <section className="flex flex-col w-full items-center justify-center xs:items-start xs:justify-start gap-2">
       {modo == "criar" && <h2 className="title pb-4">{formTitle}</h2>}
       <form
         onSubmit={handleSubmit(handleOnSubmit)}
         className="pl-2 flex w-full"
       >
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full items-center justify-center xs:items-start xs:justify-start">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap:2 lg:gap-4 justify-between">
-            <div className="campo">
+            <div className="campo ">
               <Label htmlFor="tipoTransacao" className="">
                 Tipo de Transação:
               </Label>

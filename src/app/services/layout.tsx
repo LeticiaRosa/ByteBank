@@ -6,6 +6,7 @@ import { ContaProvider } from "../../contexts/ContaContext";
 import CardInfo from "../../components/layout/CardInfo";
 import Extrato from "../../components/banking/extrato/Extrato";
 import { ToastContainer } from "react-toastify";
+import { menuItems } from "../../config/menuItems";
 
 export default function ServiceLayout({
   children,
@@ -27,7 +28,11 @@ export default function ServiceLayout({
       <HeaderServices setOpenMenu={handleOpenMenu} />
       <div className="center">
         <div className="container pt-6 max-w-250">
-          <Menu openMenu={openMenu} setOpenMenu={handleOpenMenu} />
+          <Menu
+            openMenu={openMenu}
+            setOpenMenu={handleOpenMenu}
+            menuItems={menuItems}
+          />
           <ContaProvider>
             <div className="container-page">
               <div className="flex flex-col gap-6 w-full">
