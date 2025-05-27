@@ -19,8 +19,8 @@ export default function Modal({ onClose, title = " ", children }: ModalProps) {
         className="bg-white rounded-lg p-4 max-w-md w-full "
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex justify-between items-center">
-          {title && <h2 className="text-lg font-semibold ">{title}</h2>}
+        <div className="flex justify-between items-start pb-6">
+          {title && <h2 className="title ">{title}</h2>}
           <button
             onClick={onClose}
             className="p-1 hover:bg-cinza rounded-full transition-colors cursor-pointer"

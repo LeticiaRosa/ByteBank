@@ -55,7 +55,7 @@ export default function Extrato() {
 
       {/* Modal de edição */}
       {modalAberto && (
-        <Modal onClose={fecharModal}>
+        <Modal onClose={fecharModal} title="Editar Transação">
           <TransacaoForm
             modo="editar"
             transacaoParaEditar={transacaoParaEditar}

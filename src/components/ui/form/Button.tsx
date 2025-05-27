@@ -16,7 +16,10 @@ export default function Button({
   ...props
 }: ButtonProps) {
   return (
-    <button className={VARIANT_CLASSES[variant]} {...props}>
+    <button
+      {...props}
+      className={`${VARIANT_CLASSES[variant]} ${props.className || ""} `.trim()}
+    >
       {children}
     </button>
   );

@@ -130,49 +130,73 @@ export default function TransacaoForm({
     modo === "criar" ? "Concluir transação" : "Atualizar transação";
 
   return (
-    <section className=" gap-2">
-      <h2 className="title pb-4">{formTitle}</h2>
-      <form onSubmit={handleSubmit(handleOnSubmit)} className="pl-2">
-        <div className="campo">
-          <Label htmlFor="tipoTransacao" className="mb-1">
-            Tipo de Transação:
-          </Label>
-          <Select
-            options={[
-              { value: "", label: "Selecione" },
-              { value: "Depósito", label: "Depósito" },
-              { value: "Transferência", label: "Transferência" },
-              { value: "Pagamento de Boleto", label: "Pagamento de Boleto" },
-            ]}
-            id="tipoTransacao"
-            {...register("tipoTransacao")}
-          />
-          {errors.tipoTransacao && (
-            <p className="text-red-500 text-size-14 mt-1">
-              {errors.tipoTransacao.message}
-            </p>
-          )}
+    <section className="gap-2 w-full">
+      {modo == "criar" && <h2 className="title pb-4">{formTitle}</h2>}
+      <form
+        onSubmit={handleSubmit(handleOnSubmit)}
+        className="pl-2 flex w-full"
+      >
+        <div className="flex flex-col w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-between">
+            <div className="campo">
+              <Label htmlFor="tipoTransacao" className="">
+                Tipo de Transação:
+              </Label>
+              <Select
+                options={[
+                  { value: "", label: "Selecione" },
+                  { value: "Depósito", label: "Depósito" },
+                  { value: "Transferência", label: "Transferência" },
+                  {
+                    value: "Pagamento de Boleto",
+                    label: "Pagamento de Boleto",
+                  },
+                ]}
+                id="tipoTransacao"
+                {...register("tipoTransacao")}
+              />
+              {errors.tipoTransacao && (
+                <p className="text-red-500 text-size-14 mt-1">
+                  {errors.tipoTransacao.message}
+                </p>
+              )}
+            </div>
+            <div className="campo pb-6">
+              <Label htmlFor="valor">Valor:</Label>
+              <Input
+                type="number"
+                id="valor"
+                placeholder="0,00"
+                step=".01"
+                min="0.01"
+                {...register("valor")}
+              />
+              {errors.valor && (
+                <p className="text-red-500 text-size-14 mt-1">
+                  {errors.valor.message}
+                </p>
+              )}
+            </div>
+            {modo !== "criar" && (
+              <Button
+                variant="outline"
+                type="button"
+                className="flex w-25 justify-start "
+                onClick={() => {}}
+              >
+                Cancelar
+              </Button>
+            )}
+            {modo === "criar" && <p></p>}
+            <Button
+              className="flex max-w-45 justify-center"
+              type="submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Processando..." : submitButtonText}
+            </Button>
+          </div>
         </div>
-        <div className="campo pb-6">
-          <Label htmlFor="valor">Valor:</Label>
-          <Input
-            type="number"
-            id="valor"
-            placeholder="0,00"
-            step=".01"
-            min="0.01"
-            {...register("valor")}
-          />
-          {errors.valor && (
-            <p className="text-red-500 text-size-14 mt-1">
-              {errors.valor.message}
-            </p>
-          )}
-        </div>
-
-        <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Processando..." : submitButtonText}
-        </Button>
       </form>
     </section>
   );

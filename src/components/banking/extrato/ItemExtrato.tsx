@@ -6,7 +6,6 @@ import { useConta } from "../../../contexts/ContaContext";
 import { toast } from "react-toastify";
 import Modal from "../../ui/Modal";
 import { useState } from "react";
-import { set } from "react-hook-form";
 
 interface ItemExtratoProps {
   id: string;
@@ -80,7 +79,7 @@ export default function ItemExtrato({
           onClose={handleModalClose}
         >
           <p>Caso você exclua esta transação, ela não poderá ser recuperada.</p>
-          <div className="flex justify-between gap-2 mt-4">
+          <div className="flex justify-between gap-2 mt-4 pt-6">
             <Button variant="outline" onClick={handleModalClose}>
               Cancelar
             </Button>
