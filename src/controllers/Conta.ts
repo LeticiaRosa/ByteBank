@@ -166,9 +166,7 @@ export class Conta {
   }
 
   excluirTransacao(id: string): void {
-    console.log("id", id);
     const index = this.transacoes.findIndex((transacao) => transacao.id === id);
-    console.log("index", index);
     if (index !== -1) {
       const cloneTransacoes = [...this.transacoes];
       cloneTransacoes.splice(index, 1);

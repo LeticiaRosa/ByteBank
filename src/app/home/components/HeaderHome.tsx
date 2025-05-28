@@ -19,7 +19,6 @@ export default function HeaderHome({ setOpenMenu }: HeaderProps) {
           height={40}
           className="xs:hidden hover:cursor-pointer w-auto h-auto"
           onClick={() => {
-            console.log("Menu clicked");
             setOpenMenu("open");
           }}
         />
