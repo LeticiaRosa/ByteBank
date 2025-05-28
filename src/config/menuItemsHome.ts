@@ -1,17 +1,24 @@
 import { menuItemsType } from "./menuItemsType";
 
-export const menuItems: menuItemsType = [
-  { href: "/services", label: "Início" },
+export const menuItemsHome: menuItemsType = [
   {
-    href: "/services/transferencias",
-    label: "Transferências",
+    id: 1,
+    href: "/sobre",
+    label: "Sobre",
   },
   {
-    href: "/services/investimentos",
-    label: "Investimentos",
+    id: 2,
+    href: "/",
+    label: "Serviços",
   },
   {
-    href: "/services/outros",
-    label: "Outros Serviços",
+    id: 3,
+    href: "/login",
+    label: "Abrir minha conta",
+  },
+  {
+    id: 4,
+    href: "/login",
+    label: "Já tenho conta",
   },
 ];

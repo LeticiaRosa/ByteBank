@@ -3,30 +3,49 @@ import Image from "next/image";
 import { HeaderBase } from "../../../components/layout/HeaderBase";
 import Button from "../../../components/ui/form/Button";
 import LinkButton from "../../../components/ui/form/Link";
+import { List } from "phosphor-react";
 
-export default function HeaderHome() {
+interface HeaderProps {
+  setOpenMenu: (action?: string) => void;
+}
+
+export default function HeaderHome({ setOpenMenu }: HeaderProps) {
   return (
     <HeaderBase>
-      <div className="flex items-center justify-between gap-6 text-white ">
+      <div className="flex items-center justify-between gap-2 md:gap-6 text-white w-full xs:w-auto">
+        <List
+          alt="Menu"
+          width={40}
+          height={40}
+          className="xs:hidden hover:cursor-pointer w-auto h-auto"
+          onClick={() => {
+            console.log("Menu clicked");
+            setOpenMenu("open");
+          }}
+        />
+
         <Image
+          priority={true}
           src="/logo.png"
           alt="Logo"
           width={150}
           height={2}
-          className="xs:hidden md:flex hidden"
+          className="flex xs:hidden md:flex w-auto h-auto"
         />
         <Image
           src="/logo-icone.png"
           alt="Logo"
           width={40}
           height={40}
-          className="md:hidden flex"
+          className="hidden xs:flex md:hidden w-auto h-auto"
         />
-        <LinkButton href="/sobre">Sobre</LinkButton>
-        <LinkButton href="/">Serviços</LinkButton>
+        <div className="hidden xs:flex gap-4 xs:gap-2 w-full">
+          <LinkButton href="/sobre">Sobre</LinkButton>
+          <LinkButton href="/">Serviços</LinkButton>
+        </div>
       </div>
 
-      <div className="flex items-center justify-end gap-6 text-white">
+      <div className="hidden xs:flex xs:items-center xs:justify-end gap-2 lg:gap-6 text-white w-full">
         <Button variant="secondary">Abrir minha conta</Button>
         <Button variant="outline">Já tenho conta</Button>
       </div>

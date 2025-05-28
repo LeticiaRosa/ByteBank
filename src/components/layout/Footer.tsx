@@ -19,7 +19,14 @@ export default function Footer() {
           </div>
           <div className="flex flex-col p-4 gap-2 xs:px-0">
             <p className="font-bold">Desenvolvido por Alura</p>
-            <Image src="/logo.png" alt="Logo" width={200} height={2} />
+            <Image
+              className="w-auto h-auto"
+              src="/logo.png"
+              alt="Logo"
+              width={200}
+              height={2}
+              priority={true}
+            />
             {/* <p> rede sociais</p> */}
           </div>
         </div>

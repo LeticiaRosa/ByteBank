@@ -81,13 +81,13 @@
     @apply h-10 border-2 border-verde-claro bg-white rounded-md p-2 text-black text-start focus:border-verde focus:outline-none text-size-14;
   }
   .btn {
-    @apply bg-verde text-white rounded-md py-2 px-4 text-center font-semibold cursor-pointer transition-colors duration-300 ease-in-out hover:bg-verde-claro min-w-45;
+    @apply bg-verde text-white rounded-md p-2 md:px-4 text-center font-semibold cursor-pointer transition-colors duration-300 ease-in-out hover:bg-verde-claro min-w-45;
   }
   .btn-secoundary {
-    @apply bg-white text-verde rounded-md py-2 px-4 text-center font-semibold cursor-pointer transition-colors duration-300 ease-in-out hover:bg-verde-claro hover:text-white;
+    @apply bg-white text-verde rounded-md p-2 md:px-4 text-center font-semibold cursor-pointer transition-colors duration-300 ease-in-out hover:bg-verde-claro hover:text-white;
   }
   .btn-outline {
-    @apply border border-white text-white rounded-md py-2 px-4 text-center font-semibold cursor-pointer transition-colors duration-300 ease-in-out hover:bg-cinza;
+    @apply border border-white text-white rounded-md p-2 md:px-4 text-center font-semibold cursor-pointer transition-colors duration-300 ease-in-out hover:bg-cinza;
   }
   .btn-icon {
     @apply bg-verde text-white rounded-full p-2 mt-2 text-center font-semibold cursor-pointer transition-colors duration-300 ease-in-out hover:bg-verde-claro;
@@ -96,7 +96,7 @@
     @apply bg-erro text-white rounded-md py-2 px-4 text-center font-semibold cursor-pointer transition-colors duration-300 ease-in-out hover:bg-red-500;
   }
   .link {
-    @apply text-white font-semibold text-size-16 cursor-pointer;
+    @apply text-white font-semibold text-size-14 xs:text-size-16 cursor-pointer;
   }
   .link-secoundary {
     @apply text-verde font-semibold text-size-16 cursor-pointer;

@@ -2,6 +2,7 @@
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import { HeaderBase } from "./HeaderBase";
+import { List, UserCircle } from "phosphor-react";
 
 interface HeaderProps {
   setOpenMenu: () => void;
@@ -11,12 +12,11 @@ export default function HeaderServices({ setOpenMenu }: HeaderProps) {
   return (
     <HeaderBase>
       <div className="flex items-center justify-between gap-6">
-        <Image
-          src="/menu.png"
+        <List
           alt="Menu"
-          width={32}
-          height={32}
-          className="xs:hidden hover:cursor-pointer"
+          width={40}
+          height={40}
+          className="xs:hidden hover:cursor-pointer text-white"
           onClick={() => setOpenMenu()}
         />
         <Image
@@ -24,8 +24,9 @@ export default function HeaderServices({ setOpenMenu }: HeaderProps) {
           alt="Logo"
           width={150}
           height={2}
-          className="xs:flex hidden hover:cursor-pointer"
+          className="xs:flex hidden hover:cursor-pointer w-auto h-auto"
           onClick={() => redirect("/home")}
+          priority={true}
         />
       </div>
 
@@ -33,11 +34,11 @@ export default function HeaderServices({ setOpenMenu }: HeaderProps) {
         <span className="text-size-14 xs:flex hidden">
           Joana da Silva Oliveira
         </span>
-        <Image
-          src="/Avatar.png"
+        <UserCircle
+          weight="light"
           alt="Ícone de usuário"
-          width={40}
-          height={40}
+          width={60}
+          height={60}
         />
       </div>
     </HeaderBase>

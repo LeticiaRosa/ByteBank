@@ -30,7 +30,7 @@ export function Menu({ openMenu, setOpenMenu, menuItems }: MenuProps) {
           </div>
           {menuItems.map((item) => (
             <li
-              key={item.href}
+              key={item.id}
               className="flex text-center items-center justify-center md:flex-col md:items-center md:text-size-16 text-size-14 px-4"
               onClick={() => setOpenMenu("open")}
             >

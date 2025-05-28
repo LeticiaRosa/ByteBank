@@ -40,6 +40,7 @@ export default function Vantagens() {
             className="flex flex-col items-center justify-center p-4 text-center pt-10"
           >
             <Image
+              className="w-auto h-auto"
               src={vantagem.src}
               alt={vantagem.title}
               width={50}
