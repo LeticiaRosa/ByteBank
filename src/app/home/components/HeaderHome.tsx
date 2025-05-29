@@ -34,8 +34,8 @@ export default function HeaderHome({ setOpenMenu }: HeaderProps) {
         <Image
           src="/logo-icone.png"
           alt="Logo"
-          width={20}
-          height={20}
+          width={40}
+          height={40}
           className="hidden xs:flex md:hidden w-auto h-auto"
         />
         <div className="hidden xs:flex gap-4 xs:gap-2 w-full">
@@ -46,7 +46,9 @@ export default function HeaderHome({ setOpenMenu }: HeaderProps) {
 
       <div className="hidden xs:flex xs:items-center xs:justify-end gap-2 lg:gap-6 text-white w-full">
         <Button variant="secondary">Abrir minha conta</Button>
-        <Button variant="outline">Já tenho conta</Button>
+        <Button variant="outline" className="text-white hover:text-verde">
+          Já tenho conta
+        </Button>
       </div>
     </HeaderBase>
   );
