@@ -27,15 +27,15 @@ export default function HeaderHome({ setOpenMenu }: HeaderProps) {
           priority={true}
           src="/logo.png"
           alt="Logo"
-          width={150}
+          width={120}
           height={2}
           className="flex xs:hidden md:flex w-auto h-auto"
         />
         <Image
           src="/logo-icone.png"
           alt="Logo"
-          width={40}
-          height={40}
+          width={20}
+          height={20}
           className="hidden xs:flex md:hidden w-auto h-auto"
         />
         <div className="hidden xs:flex gap-4 xs:gap-2 w-full">

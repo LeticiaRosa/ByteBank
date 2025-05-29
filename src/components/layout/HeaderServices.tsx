@@ -22,7 +22,7 @@ export default function HeaderServices({ setOpenMenu }: HeaderProps) {
         <Image
           src="/logo.png"
           alt="Logo"
-          width={150}
+          width={120}
           height={2}
           className="xs:flex hidden hover:cursor-pointer w-auto h-auto"
           onClick={() => redirect("/home")}
@@ -37,8 +37,8 @@ export default function HeaderServices({ setOpenMenu }: HeaderProps) {
         <UserCircle
           weight="light"
           alt="Ícone de usuário"
-          width={60}
-          height={60}
+          width={40}
+          height={40}
         />
       </div>
     </HeaderBase>

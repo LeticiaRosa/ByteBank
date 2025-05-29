@@ -2,11 +2,6 @@ import { menuItemsType } from "./menuItemsType";
 
 export const menuItems: menuItemsType = [
   {
-    id: 1,
-    href: "/home",
-    label: "Home",
-  },
-  {
     id: 2,
     href: "/services",
     label: "Início",
