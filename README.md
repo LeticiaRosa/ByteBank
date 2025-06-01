@@ -4,8 +4,8 @@ Este projeto é o resultado do Tech Challenge da Fase 01 da pós-graduação em 
 
 ### ➕ Nova Transação
 
-- Formulário/modal para adicionar uma transação
-- Campos: tipo (depósito, retirada, etc.), valor, data
+- Formulário para adicionar uma transação
+- Campos: tipo de transação (depósito, transferência, etc.) e valor
 
 ### ✏️ Edição de Transação
 
@@ -20,15 +20,19 @@ O design system foi criado com base no [layout Figma oficial do projeto](https:/
 - Modais
 - Tipografia e cores
 
+OBS: Algumas alterações foram realizadas para melhorar o design da aplicação
+
 ## 🧱 Organização do Código
 
 src/
+├── app/ # Páginas da aplicação (Next.js)
 ├── components/ # Componentes reutilizáveis
-├── pages/ # Páginas da aplicação (Next.js)
-├── services/ # Lógica de negócio (POO aplicada)
-├── models/ # Modelos e entidades
-├── styles/ # Cores, fontes e tokens do design system
+├── config/ # Configurações do projeto (mocks)
+├── contexts/ # Contexto do projeto
+├── controllers/ # Modelos e entidades
+├── decorators/ # Decorators do projeto
 └── utils/ # Utilitários gerais
+styles/ # Cores, fontes e tokens do design system
 
 ## 📹 Demonstração em Vídeo
 
