@@ -32,12 +32,14 @@ export type Transacao = {
 };
 
 interface TransacaoFormProps {
+  fecharModal?: () => void;
   transacaoParaEditar?: Transacao | null;
   onSave?: (transacao: Transacao) => void;
   modo?: "criar" | "editar";
 }
 
 export default function TransacaoForm({
+  fecharModal,
   transacaoParaEditar,
   onSave,
   modo = "criar",
@@ -183,7 +185,7 @@ export default function TransacaoForm({
                 variant="outline"
                 type="button"
                 className="flex w-25 justify-start "
-                onClick={() => {}}
+                onClick={fecharModal}
               >
                 Cancelar
               </Button>
