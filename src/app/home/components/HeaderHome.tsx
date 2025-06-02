@@ -4,6 +4,7 @@ import { HeaderBase } from "../../../components/layout/HeaderBase";
 import Button from "../../../components/ui/form/Button";
 import LinkButton from "../../../components/ui/form/Link";
 import { List } from "phosphor-react";
+import { redirect } from "next/navigation";
 
 interface HeaderProps {
   setOpenMenu: (action?: string) => void;
@@ -45,8 +46,14 @@ export default function HeaderHome({ setOpenMenu }: HeaderProps) {
       </div>
 
       <div className="hidden xs:flex xs:items-center xs:justify-end gap-2 lg:gap-6 text-white w-full">
-        <Button variant="secondary">Abrir minha conta</Button>
-        <Button variant="outline" className="text-white hover:text-verde">
+        <Button variant="secondary" onClick={() => redirect("/")}>
+          Abrir minha conta
+        </Button>
+        <Button
+          variant="outline"
+          className="text-white hover:text-verde"
+          onClick={() => redirect("/")}
+        >
           Já tenho conta
         </Button>
       </div>
