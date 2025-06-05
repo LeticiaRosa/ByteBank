@@ -2,6 +2,10 @@
 
 Este projeto é o resultado do Tech Challenge da Fase 01 da pós-graduação em Front-End Engineer. Ele consiste no desenvolvimento do **frontend de uma aplicação de gerenciamento financeiro** utilizando **Next.js** e **Design System**, com aplicação dos conceitos de **Programação Orientada a Objetos (POO)**.
 
+![image](https://github.com/user-attachments/assets/8ad10374-7bb4-4b18-b20d-5a0f5b2a874b)
+![image](https://github.com/user-attachments/assets/131e3fbe-3cb1-4eea-80ec-7f73a6e99ab8)
+
+
 ## 🚀 Tecnologias Utilizadas
 
 ### Frontend
